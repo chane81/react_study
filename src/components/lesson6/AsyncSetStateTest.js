@@ -16,7 +16,6 @@ class AsyncSetStateTest extends Component {
             counter: this.state.counter + 1
         });
 
-        
         alert(this.state.counter);
     }
 
