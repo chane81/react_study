@@ -5,6 +5,7 @@ class Lesson6 extends Component {
     render() {
         return (
             <ComponentIterationSample />
+            
         );
     }
 }
