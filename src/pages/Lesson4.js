@@ -5,7 +5,6 @@ class Lesson4 extends Component {
     render() {
         return (
             <ComponentEventPractice />
-            
         );
     }
 }

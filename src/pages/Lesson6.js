@@ -6,8 +6,8 @@ class Lesson6 extends Component {
     render() {
         return (
             <div>
-                <p><ComponentIterationSample /></p>
-                <p><AsyncSetStateTest /></p>
+                <ComponentIterationSample /><p/>
+                <AsyncSetStateTest /><p/>
             </div>
         );
     }
