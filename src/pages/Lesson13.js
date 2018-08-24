@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import Counter from '../components/lesson13/Counter';
 import * as actions from '../actions/ActionTypes';
 import { connect } from 'react-redux';
