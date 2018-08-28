@@ -1,58 +1,50 @@
-import Counter from '../components/lesson13/Counter';
-import * as actions from '../actions/ActionTypes';
+import React from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions/ActionTypes';
+import CounterList from '../components/lesson13/CounterList';
+import Buttons from '../components/lesson13/Buttons';
+import getRandomColor from '../lib/getRandomColor';
 
-// 13가지 색상 중 랜덤으로 선택하는 함수
-export function getRandomColor() {
-    const colors = [
-        '#495057',
-        '#f03e3e',
-        '#d6336c',
-        '#ae3ec9',
-        '#7048e8',
-        '#4263eb',
-        '#1c7cd6',
-        '#1098ad',
-        '#0ca678',
-        '#37b24d',
-        '#74b816',
-        '#f59f00',
-        '#f76707',
-    ];
 
-    const random = Math.floor(Math.random() * 13);
+/* 카운터 디스패치, 커넥스 */
+ const mapStateToProps = (state) => ({
+     counters: state.counters
+ });
 
-    return colors[random];
-}
-
-const mapStateToProps = (state) => ({
-    number: state.numberData.number,
-    color: state.colorData.color
-});
 
 const mapDispatchToProps = (dispatch) => ({
-    onIncrement: () => dispatch(actions.increment()),
-    onDecrement: () => dispatch(actions.decrement()),
-    onSetColor: () => {
+    onIncrement: (index) => dispatch(actions.increment(index)),
+    onDecrement: (index) => dispatch(actions.decrement(index)),
+    onSetColor: (index) => {
          const color = getRandomColor();
-         dispatch(actions.setColor(color));
+         dispatch(actions.setColor({index, color}));
      }
 });
 
-const CounterContainer = connect(
+const ConnectCounter = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Counter);
+)(CounterList);
+/* 카운터 디스패치, 커넥스 */
 
-// class Lesson13 extends Component {
-    
-//     render() {
-//         return (
-//             <div>
-//                 <Counter />
-//             </div>
-//         );
-//     }
-// }
 
-export default CounterContainer;
+/* 버튼 디스패치, 커넥트 */
+const mapToDispatchButtons = (dispatch) => ({
+    onCreate: () => dispatch(actions.create(getRandomColor())),
+    onRemove: () => dispatch(actions.remove()),
+});
+
+const ConnectButtons = connect(
+    null,
+    mapToDispatchButtons
+)(Buttons);
+/* 버튼 디스패치, 커넥트 */
+
+export default () => {
+    return (
+      <div>
+        <ConnectButtons></ConnectButtons>
+        <ConnectCounter></ConnectCounter>
+      </div>
+    )
+  }

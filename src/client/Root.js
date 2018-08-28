@@ -9,7 +9,8 @@ import reducers from '../reducers/index';
 import { Provider } from 'react-redux';
 
 // 스토어 생성
-const store = createStore(reducers);
+// 크롬 리덕스 dev tools 를 쓰기위해 구문추가 => window.devToolsExtension && window.devToolsExtension()
+const store = createStore(reducers, window.devToolsExtension && window.devToolsExtension());
 
 
 const Root = () => {

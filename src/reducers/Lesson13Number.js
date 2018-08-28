@@ -1,19 +1,32 @@
 import * as Types from '../actions/ActionTypes';
-
-const initialState = {
-    number: 0
-};
+import initialState from './Lesson13InitialState'
 
 const number = (state = initialState, action) => {
+    const { counters } = state;
+
     switch(action.type)
     {
         case Types.INCREMENT:
             return {
-                number: state.number + 1
+                counters: [
+                    ...counters.slice(0, action.index),
+                    {
+                        ...counters[action.index],
+                        number: counters[action.index].number + 1
+                    },
+                    ...counters.slice(action.index + 1, counters.length)
+                ]
             };
         case Types.DECREMENT:
             return {
-                number: state.number - 1
+                counters: [
+                    ...counters.slice(0, action.index),
+                    {
+                        ...counters[action.index],
+                        number: counters[action.index].number - 1
+                    },
+                    ...counters.slice(action.index + 1, counters.length)
+                ]
             }
         default:
             return state;

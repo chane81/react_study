@@ -1,25 +1,29 @@
+
 import * as Types from '../actions/ActionTypes';
 import initialState from './Lesson13InitialState'
 
-const color = (state = initialState, action) => {
+const createRemove = (state = initialState, action) => {
     const { counters } = state;
-    
+
     switch(action.type)
     {
-        case Types.SET_COLOR:
+        case Types.CREATE:
             return {
                 counters: [
-                    ...counters.slice(0, action.index),
+                    ...counters,
                     {
-                        ...counters[action.index],
+                        number: 0,
                         color: action.color
-                    },
-                    ...counters.slice(action.index + 1, counters.length)
+                    }
                 ]
+            };
+        case Types.REMOVE:
+            return {
+                counters: counters.slice(0, counters.length - 1)
             };
         default:
             return state;
     }
 };
 
-export default color;
+export default createRemove;
