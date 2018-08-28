@@ -5,12 +5,12 @@ import App from 'shared/App'
 
 // 리덕스 관련 불러오기
 import { createStore } from 'redux';
-import reducers from '../reducers/index';
+import rootReducers from '../reducers/index';
 import { Provider } from 'react-redux';
 
 // 스토어 생성
 // 크롬 리덕스 dev tools 를 쓰기위해 구문추가 => window.devToolsExtension && window.devToolsExtension()
-const store = createStore(reducers, window.devToolsExtension && window.devToolsExtension());
+const store = createStore(rootReducers, window.devToolsExtension && window.devToolsExtension());
 
 
 const Root = () => {

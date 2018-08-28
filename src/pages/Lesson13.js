@@ -6,13 +6,14 @@ import Buttons from '../components/lesson13/Buttons';
 import getRandomColor from '../lib/getRandomColor';
 
 
-/* 카운터 디스패치, 커넥스 */
- const mapStateToProps = (state) => ({
+/* 카운터리스트 Connect */
+// state 를 컴포넌트 props 와 연결
+ const mapStateCounterList = (state) => ({
      counters: state.counters
  });
 
-
-const mapDispatchToProps = (dispatch) => ({
+// action dispatch 를 컴포넌트 props 와 연결
+const mapDispatchCounterList = (dispatch) => ({
     onIncrement: (index) => dispatch(actions.increment(index)),
     onDecrement: (index) => dispatch(actions.decrement(index)),
     onSetColor: (index) => {
@@ -21,24 +22,28 @@ const mapDispatchToProps = (dispatch) => ({
      }
 });
 
+// connect
 const ConnectCounter = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateCounterList,
+    mapDispatchCounterList
 )(CounterList);
-/* 카운터 디스패치, 커넥스 */
+/* 카운터리스트 Connect */
 
 
 /* 버튼 디스패치, 커넥트 */
-const mapToDispatchButtons = (dispatch) => ({
+// action dispatch 를 컴포넌트 props 와 연결
+const mapDispatchButtons = (dispatch) => ({
     onCreate: () => dispatch(actions.create(getRandomColor())),
     onRemove: () => dispatch(actions.remove()),
 });
 
+// connect
 const ConnectButtons = connect(
     null,
-    mapToDispatchButtons
+    mapDispatchButtons
 )(Buttons);
 /* 버튼 디스패치, 커넥트 */
+
 
 export default () => {
     return (
