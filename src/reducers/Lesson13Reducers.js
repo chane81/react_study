@@ -4,8 +4,8 @@ import createRemove from './Lesson13CreateRemove';
 import reduceReducers from 'reduce-reducers';
 import initialState from './Lesson13InitialState';
 
-import * as Types from '../actions/ActionTypes'
-import { combineReducers } from 'redux'
+//import * as Types from '../actions/ActionTypes'
+//import { combineReducers } from 'redux'
 
 /* 리듀서들 병합 - combineReducers 를 씀, 리듀서들간에 state 공유안됨 */
 //  const reducers = combineReducers({
