@@ -26,17 +26,17 @@ export function getRandomColor() {
 }
 
 const mapStateToProps = (state) => ({
-    color: state.color,
-    number: state.number
+    number: state.numberData.number,
+    color: state.colorData.color
 });
 
 const mapDispatchToProps = (dispatch) => ({
     onIncrement: () => dispatch(actions.increment()),
     onDecrement: () => dispatch(actions.decrement()),
     onSetColor: () => {
-        const color = getRandomColor();
-        dispatch(actions.setColor(color));
-    }
+         const color = getRandomColor();
+         dispatch(actions.setColor(color));
+     }
 });
 
 const CounterContainer = connect(
