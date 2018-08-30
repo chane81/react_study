@@ -26,10 +26,12 @@
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
+    "immutable": "^3.8.2",
     "jest": "20.0.4",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
+    "prettier": "^1.14.2",
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.4.2",
@@ -39,6 +41,7 @@
     "react-router-dom": "^4.3.1",
     "reduce-reducers": "^0.4.3",
     "redux": "^4.0.0",
+    "redux-actions": "^2.6.1",
     "resolve": "1.6.0",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
@@ -54,7 +57,8 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "prettier-eslint": "^8.8.2"
   },
   "jest": {
     "collectCoverageFrom": [
