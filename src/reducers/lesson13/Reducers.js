@@ -1,8 +1,8 @@
-import number from './Lesson13Number';
-import color from './Lesson13Color';
-import createRemove from './Lesson13CreateRemove';
 import reduceReducers from 'reduce-reducers';
-import initialState from './Lesson13InitialState';
+import number from './Number';
+import color from './Color';
+import createRemove from './CreateRemove';
+import initialState from './InitialState';
 
 //import * as Types from '../actions/ActionTypes'
 //import { combineReducers } from 'redux'

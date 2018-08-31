@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ComponentValidation from 'components/lesson5/ValidationSample';
-import ComponentScrollBox from 'components/lesson5/ScrollBox';
+import ComponentValidation from '../components/lesson5/ValidationSample';
+import ComponentScrollBox from '../components/lesson5/ScrollBox';
 
 class Lesson5 extends Component {
 	render() {

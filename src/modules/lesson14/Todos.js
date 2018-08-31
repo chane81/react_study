@@ -22,31 +22,32 @@ const TOGGLE = 'lesson14/TOGGLE';
 const REMOVE = 'lesson14/REMOVE';
 
 // ACTION 생성
-export const insert = createAction(INSERT);
-export const toggle = createAction(TOGGLE);
-export const remove = createAction(REMOVE);
+export const insert = createAction(INSERT, ({ id, text, done }) => ({
+	id,
+	text,
+	done
+}));
+export const toggle = createAction(TOGGLE, index => index);
+export const remove = createAction(REMOVE, index => index);
 
 // 리듀서 생성
-export default handleActions({
-	[INSERT]: (state, action) => {
-		const { id, text, done } = action.payload;
+export default handleActions(
+	{
+		[INSERT]: (state, action) => {
+			const { id, text, done } = action.payload;
 
-		return state.push(
-			fromJS({
-				id,
-				text,
-				done
-			})
-		);
+			return state.push(fromJS({ id, text, done }));
+		},
+		[TOGGLE]: (state, action) => {
+			const { index } = action.payload;
+
+			return state.updateIn([index, 'done'], done => !done);
+		},
+		[REMOVE]: (state, action) => {
+			const { index } = action.payload;
+
+			return state.delete(index);
+		}
 	},
-	[TOGGLE]: (state, action) => {
-		const { index } = action.payload;
-
-		return state.updateIn([index, 'done'], done => !done);
-	},
-	[REMOVE]: (state, action) => {
-		const { index } = action.payload;
-
-		return state.delete(index);
-	}
-});
+	initialState
+);

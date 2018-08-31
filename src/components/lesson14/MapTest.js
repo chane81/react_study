@@ -1,6 +1,5 @@
 import React from 'react';
 import { Map, List, fromJS } from 'immutable';
-import { parseConfigFileTextToJson } from 'typescript';
 
 const data = fromJS({
 	a: 1,

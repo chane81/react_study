@@ -1,5 +1,5 @@
-import * as Types from '../actions/ActionTypes';
-import initialState from './Lesson13InitialState'
+import * as Types from '../../actions/ActionTypes';
+import initialState from './InitialState'
 
 const color = (state = initialState, action) => {
     const { counters } = state;

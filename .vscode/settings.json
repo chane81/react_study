@@ -16,5 +16,11 @@
 	"prettier.arrowParens": "avoid",
 	"prettier.proseWrap": "preserve",
 	"prettier.semi": true,
-	"prettier.singleQuote": true
+	"prettier.singleQuote": true,
+
+	// Guide 설정
+	"editor.renderIndentGuides": false,
+
+	// 테마 설정
+	"workbench.colorTheme": "Cobalt2"
 }
