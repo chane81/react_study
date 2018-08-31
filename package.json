@@ -1,5 +1,5 @@
 {
-	"name": "test4",
+	"name": "react_study",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -33,6 +33,7 @@
 		"postcss-flexbugs-fixes": "3.2.0",
 		"postcss-loader": "2.0.8",
 		"prettier": "^1.14.2",
+		"prettier-eslint": "^8.8.2",
 		"promise": "8.0.1",
 		"raf": "3.4.0",
 		"react": "^16.4.2",
