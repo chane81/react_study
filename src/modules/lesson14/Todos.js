@@ -1,4 +1,4 @@
-import { Map, List, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 import { handleActions, createAction } from 'redux-actions';
 
 // [리듀서 - DUCK 구조]
