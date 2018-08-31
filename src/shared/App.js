@@ -5,6 +5,7 @@ import {
 	Lesson4,
 	Lesson5,
 	Lesson6,
+	Lesson10,
 	Lesson13,
 	Lesson14
 } from '../pages/PageStore';
@@ -20,6 +21,7 @@ class App extends Component {
 				<Route path="/lesson6" component={Lesson6} />
 				<Route path="/lesson13" component={Lesson13} />
 				<Route path="/lesson14" component={Lesson14} />
+				<Route path="/lesson10" component={Lesson10} />
 			</div>
 		);
 	}

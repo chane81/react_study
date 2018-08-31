@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, List, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 
 const data = fromJS({
 	a: 1,
@@ -37,8 +37,6 @@ const listUnshift = JSON.stringify(listTest.unshift(fromJS({ value: 32 })));
 const listDelete = JSON.stringify(listTest.delete(1));
 const listPop = JSON.stringify(listTest.pop());
 const listSize = listTest.size;
-
-const styleSpan = { width: '500px' };
 
 export default () => {
 	return (
