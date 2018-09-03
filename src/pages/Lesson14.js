@@ -89,4 +89,5 @@ export const ConnectTodoList = connect(
 		TodosActions: bindActionCreators(TodosActions, dispatch)
 	})
 )(TodoListContainer);
+
 /* TodoList Connect */
