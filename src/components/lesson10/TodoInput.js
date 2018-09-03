@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../../styles/lesson10/TodoInput.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-export default ({ value, onChange, onInsert }) => {
+/**
+ * @augments {Component<{	value:string,	onChange:Function,	onInsert:Function>}
+ */
+const TodoInput = ({ value, onChange, onInsert }) => {
 	const handleKeyPress = e => {
 		if (e.key === 'Enter') {
 			onInsert();
@@ -24,3 +28,11 @@ export default ({ value, onChange, onInsert }) => {
 		</div>
 	);
 };
+
+TodoInput.propTypes = {
+	value: PropTypes.string,
+	onChange: PropTypes.func,
+	onInsert: PropTypes.func
+};
+
+export default TodoInput;

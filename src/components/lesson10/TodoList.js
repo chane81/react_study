@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
-export default class TodoList extends Component {
-	state = {
-		done: false
-	};
-
-	handlerToggle = e => {
-		this.setState({ done: !this.state.done });
-	};
-
+/**
+ * @augments {Component<{ todos:object,	onToggle:Function,	onRemove:Function> }
+ */
+class TodoList extends Component {
 	render() {
-		return (
-			<div>
-				<TodoItem done={this.state.done} onToggle={this.handlerToggle}>
-					리액트 공부하기
-				</TodoItem>
-				<TodoItem>컴포넌트 스타일링 해보기</TodoItem>
-			</div>
-		);
+		const { todos, onToggle, onRemove } = this.props;
+
+		const todoList = todos.map(todo => (
+			<TodoItem
+				key={todo.get('id')}
+				done={todo.get('done')}
+				onToggle={() => onToggle(todo.get('id'))}
+				onRemove={() => onRemove(todo.get('id'))}>
+				{todo.get('text')}
+			</TodoItem>
+		));
+
+		return <div>{todoList}</div>;
 	}
 }
+
+TodoList.propTypes = {
+	todos: PropTypes.object,
+	onToggle: PropTypes.func,
+	onRemove: PropTypes.func
+};
+
+export default TodoList;
