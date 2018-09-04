@@ -49,14 +49,14 @@ class TodoInputContainer extends Component {
 
 TodoInputContainer.propTypes = {
 	value: PropTypes.string,
-	InputActions: PropTypes.func,
-	TodosActions: PropTypes.func
+	InputActions: PropTypes.any,
+	TodosActions: PropTypes.any
 };
 
 const ConnectTodoInput = connect(
 	state => {
 		console.log(state);
-		return { value: state.input.get('value') };
+		return { value: state.Lesson14Reducers.input.get('value') };
 	},
 	dispatch => ({
 		InputActions: bindActionCreators(InputActions, dispatch),
@@ -95,13 +95,13 @@ class TodoListContainer extends Component {
 
 TodoListContainer.propTypes = {
 	todos: PropTypes.object,
-	TodosActions: PropTypes.func
+	TodosActions: PropTypes.any
 };
 
 const ConnectTodoList = connect(
 	state => {
 		console.log(state);
-		return { todos: state.todos };
+		return { todos: state.Lesson14Reducers.todos };
 	},
 	dispatch => ({
 		TodosActions: bindActionCreators(TodosActions, dispatch)

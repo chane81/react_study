@@ -35,7 +35,7 @@ class TodoItem extends Component {
 }
 
 TodoItem.propTypes = {
-	done: PropTypes.object,
+	done: PropTypes.bool,
 	children: PropTypes.string,
 	onToggle: PropTypes.func,
 	onRemove: PropTypes.func

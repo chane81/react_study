@@ -39,12 +39,16 @@ export default handleActions(
 			return state.push(fromJS({ id, text, done }));
 		},
 		[TOGGLE]: (state, action) => {
-			const { index } = action.payload;
+			const id = action.payload;
+			const index = state.findIndex(item => item.get('id') === id);
 
-			return state.updateIn([index, 'done'], done => !done);
+			return state.update(index, item =>
+				item.set('done', !item.get('done'))
+			);
 		},
 		[REMOVE]: (state, action) => {
-			const { index } = action.payload;
+			const id = action.payload;
+			const index = state.findIndex(item => item.get('id') === id);
 
 			return state.delete(index);
 		}
