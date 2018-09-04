@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { default as MapTest } from '../components/lesson14/MapTest';
+//import { default as MapTest } from '../components/lesson14/MapTest';
 import TodoInput from '../components/lesson10/TodoInput';
 import TodoList from '../components/lesson10/TodoList';
 import * as InputActions from '../modules/lesson14/Input';
 import * as TodosActions from '../modules/lesson14/Todos';
 import { bindActionCreators } from 'redux';
+//import { fromJS } from 'immutable';
 
 /* TodoInput Connect */
 class TodoInputContainer extends Component {
@@ -52,10 +53,11 @@ TodoInputContainer.propTypes = {
 	TodosActions: PropTypes.func
 };
 
-export const ConnectTodoInput = connect(
-	state => ({
-		value: state.input.get('value')
-	}),
+const ConnectTodoInput = connect(
+	state => {
+		console.log(state);
+		return { value: state.input.get('value') };
+	},
 	dispatch => ({
 		InputActions: bindActionCreators(InputActions, dispatch),
 		TodosActions: bindActionCreators(TodosActions, dispatch)
@@ -65,13 +67,28 @@ export const ConnectTodoInput = connect(
 
 /* TodoList Connect */
 class TodoListContainer extends Component {
-	handleToggle = (id) => {
+	handleToggle = id => {
 		const { TodosActions } = this.props;
-	}
+
+		TodosActions.toggle(id);
+	};
+
+	handleRemove = id => {
+		const { TodosActions } = this.props;
+
+		TodosActions.remove(id);
+	};
 
 	render() {
+		const { todos } = this.props;
+		const { handleToggle, handleRemove } = this;
+
 		return (
-			<TodoList todos={} onToggle={} onRemove={}></TodoList>
+			<TodoList
+				todos={todos}
+				onToggle={handleToggle}
+				onRemove={handleRemove}
+			/>
 		);
 	}
 }
@@ -81,13 +98,23 @@ TodoListContainer.propTypes = {
 	TodosActions: PropTypes.func
 };
 
-export const ConnectTodoList = connect(
-	state => ({
-		todos: state.todos
-	}),
+const ConnectTodoList = connect(
+	state => {
+		console.log(state);
+		return { todos: state.todos };
+	},
 	dispatch => ({
 		TodosActions: bindActionCreators(TodosActions, dispatch)
 	})
 )(TodoListContainer);
 
 /* TodoList Connect */
+
+export default () => {
+	return (
+		<div>
+			<ConnectTodoInput />
+			<ConnectTodoList />
+		</div>
+	);
+};
