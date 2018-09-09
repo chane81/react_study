@@ -1,6 +1,5 @@
 import React from 'react';
 import App from '../shared/App';
-import { BrowserRouter } from 'react-router-dom';
 
 // 리덕스 관련 불러오기
 import { createStore } from 'redux';
@@ -21,12 +20,10 @@ const store = createStore(
 	window.devToolsExtension && window.devToolsExtension()
 );
 
-const Root = ({ base }) => {
+const Root = ({ baseUrl }) => {
 	return (
 		<Provider store={store}>
-			<BrowserRouter basename={base}>
-				<App />
-			</BrowserRouter>
+			<App baseUrl={baseUrl} />
 		</Provider>
 	);
 };
