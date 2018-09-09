@@ -1,5 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
 import { BrowserRouter } from 'react-router-dom';
+=======
+>>>>>>> 브랜치테스트1
 import App from '../shared/App';
 
 // 리덕스 관련 불러오기
@@ -21,12 +24,19 @@ const store = createStore(
 	window.devToolsExtension && window.devToolsExtension()
 );
 
+<<<<<<< HEAD
 const Root = () => {
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>
+=======
+const Root = ({ baseUrl }) => {
+	return (
+		<Provider store={store}>
+			<App baseUrl={baseUrl} />
+>>>>>>> 브랜치테스트1
 		</Provider>
 	);
 };
