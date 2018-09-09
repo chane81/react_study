@@ -24,19 +24,10 @@ const store = createStore(
 	window.devToolsExtension && window.devToolsExtension()
 );
 
-<<<<<<< HEAD
-const Root = () => {
-	return (
-		<Provider store={store}>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-=======
 const Root = ({ baseUrl }) => {
 	return (
 		<Provider store={store}>
 			<App baseUrl={baseUrl} />
->>>>>>> 브랜치테스트1
 		</Provider>
 	);
 };
