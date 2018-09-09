@@ -8,7 +8,7 @@ import getRandomColor from '../lib/getRandomColor';
 /* 카운터리스트 Connect */
 // state 를 컴포넌트 props 와 연결
 const mapStateCounterList = state => ({
-	counters: state.Lesson13Reducers.counters
+	counters: state.counters
 });
 
 // action dispatch 를 컴포넌트 props 와 연결
