@@ -1,8 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import { BrowserRouter } from 'react-router-dom';
-=======
->>>>>>> 브랜치테스트1
 import App from '../shared/App';
 
 // 리덕스 관련 불러오기
