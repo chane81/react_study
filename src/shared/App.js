@@ -7,7 +7,8 @@ import {
 	Lesson6,
 	Lesson10,
 	Lesson13,
-	Lesson14
+	Lesson14,
+	Lesson15
 } from '../pages/PageStore';
 
 class App extends Component {
@@ -39,6 +40,9 @@ class App extends Component {
 						<li>
 							<Link to="/lesson14">Lesson14</Link>
 						</li>
+						<li>
+							<Link to="/lesson15">Lesson15</Link>
+						</li>
 					</ul>
 
 					<hr />
@@ -48,9 +52,10 @@ class App extends Component {
 					<Route path="/lesson4" component={Lesson4} />
 					<Route path="/lesson5" component={Lesson5} />
 					<Route path="/lesson6" component={Lesson6} />
+					<Route path="/lesson10" component={Lesson10} />
 					<Route path="/lesson13" component={Lesson13} />
 					<Route path="/lesson14" component={Lesson14} />
-					<Route path="/lesson10" component={Lesson10} />
+					<Route path="/lesson15" component={Lesson15} />
 				</React.Fragment>
 			</Router>
 		);

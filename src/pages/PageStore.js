@@ -5,3 +5,4 @@ export { default as Lesson6 } from './Lesson6';
 export { default as Lesson10 } from './Lesson10';
 export { default as Lesson13 } from './Lesson13';
 export { default as Lesson14 } from './Lesson14';
+export { default as Lesson15 } from './Lesson15';

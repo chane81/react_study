@@ -32,7 +32,7 @@ const listSetInTest = JSON.stringify(
 const listUpdateTest = JSON.stringify(
 	listTest.update(0, item => item.set('value', item.get('value') * 5))
 );
-const listPushTest = JSON.stringify(listTest.push(fromJS({ value: 999 })));
+const listPushTest = JSON.stringify(listTest.push({ value: 999 }));
 const listUnshift = JSON.stringify(listTest.unshift(fromJS({ value: 32 })));
 const listDelete = JSON.stringify(listTest.delete(1));
 const listPop = JSON.stringify(listTest.pop());

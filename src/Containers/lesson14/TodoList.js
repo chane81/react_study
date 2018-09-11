@@ -43,7 +43,7 @@ Container.propTypes = {
 export default connect(
 	state => {
 		console.log(state);
-		return { todos: state.Lesson14Reducers.todos };
+		return { todos: state.ModulesReducers.todos };
 	},
 	dispatch => ({
 		TodosActions: bindActionCreators(TodosActions, dispatch)

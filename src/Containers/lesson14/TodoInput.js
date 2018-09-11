@@ -55,7 +55,7 @@ Container.propTypes = {
 export default connect(
 	state => {
 		console.log(state);
-		return { value: state.Lesson14Reducers.input.get('value') };
+		return { value: state.ModulesReducers.input.get('value') };
 	},
 	dispatch => ({
 		InputActions: bindActionCreators(InputActions, dispatch),
