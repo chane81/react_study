@@ -1,12 +1,11 @@
 import React from 'react';
 import { handleActions, createAction } from 'redux-actions';
-import { axios } from 'axios';
+import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const getPostApi = postId =>
-	axios.get(
-		`https://jsonplaceholder.typicode.combineReducers/posts/${postId}`
-	);
+const getPostApi = postId => {
+	return axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+};
 
 const GET_POST_PENDING = '/lesson15/GET_POST_PENDING';
 const GET_POST_SUCCESS = '/lesson15/GET_POST_SUCCESS';

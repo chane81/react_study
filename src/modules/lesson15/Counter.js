@@ -7,7 +7,7 @@ const DECREMENT = 'lesson15/DECREMENT';
 export const increment = createAction(INCREMENT);
 export const decrement = createAction(DECREMENT);
 
-export const incremnetAsync = () => dispatch => {
+export const incrementAsync = () => dispatch => {
 	setTimeout(() => dispatch(increment()), 1000);
 };
 
