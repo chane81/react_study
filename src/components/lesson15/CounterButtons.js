@@ -25,7 +25,20 @@ class CounterButtons extends Component {
 
 	loadData = () => {
 		const { postActions, number } = this.props;
-		postActions.getPost(number);
+		postActions
+			.getPost(number)
+			.then(response => {
+				console.log('loadData-then');
+				console.log(response);
+
+				// -를 계속 클릭해서 number 가 0 이하가 되면 에러가 발생함
+				// 강제 에러 발생시킬 때
+				//throw new Error('강제에러 발생시킴!!');
+			})
+			.catch(error => {
+				console.log('loadData-catch');
+				console.log('ERROR MSG:' + error);
+			});
 	};
 
 	render() {
