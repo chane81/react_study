@@ -42,7 +42,7 @@ module.exports = {
 	appBuild: resolveApp('build'),
 	appPublic: resolveApp('public'),
 	appHtml: resolveApp('public/index.html'),
-	appIndexJs: resolveApp('src/index.jsx'), // index.js -> index.jsx 로 변경
+	appIndexJs: resolveApp('src/index.jsx'), // index.js  ->  index.jsx 로 변경
 	appPackageJson: resolveApp('package.json'),
 	appSrc: resolveApp('src'),
 	yarnLockFile: resolveApp('yarn.lock'),
