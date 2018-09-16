@@ -1,4 +1,3 @@
-import React from 'react';
 import { handleActions, createAction } from 'redux-actions';
 
 const INCREMENT = 'lesson15/INCREMENT';

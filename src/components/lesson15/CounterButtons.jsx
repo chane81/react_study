@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as CounterActions from '../../modules/lesson15/Counter';
 import * as PostActions from '../../modules/lesson15/Post';
-import { fromJS } from 'immutable';
 
 class CounterButtons extends Component {
 	// 컴포넌트가 처음 마운트 되었을 때
@@ -15,7 +14,7 @@ class CounterButtons extends Component {
 
 	// 상태값이 UPDATE 될때마다 호출됨
 	componentDidUpdate(prevProps, prevState) {
-		console.log('componentDidUpdate');
+		//console.log('componentDidUpdate');
 
 		// 이전 number 와 현재 number 가 다르면 요청을 시작함
 		if (this.props.number !== prevProps.number) {

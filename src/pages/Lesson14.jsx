@@ -6,10 +6,12 @@ import MapTest from '../components/lesson14/MapTest';
 
 export default () => {
 	return (
-		<MapTest />
-		// <PageTemplate>
-		// 	<ContainerTodoInput />
-		// 	<ContainerTodoList />
-		// </PageTemplate>
+		<div>
+			<MapTest />
+			<PageTemplate>
+				<ContainerTodoInput />
+				<ContainerTodoList />
+			</PageTemplate>
+		</div>
 	);
 };
