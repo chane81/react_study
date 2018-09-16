@@ -36,6 +36,8 @@ class CounterButtons extends Component {
 		return (
 			<div>
 				<h1>{number}</h1>
+				<button onClick={counterAction.increment}>+</button>
+				<button onClick={counterAction.decrement}>-</button>
 				{loading ? (
 					<h2>로딩중...</h2>
 				) : error ? (
@@ -49,9 +51,6 @@ class CounterButtons extends Component {
 
 				{/* <button onClick={CounterAction.incremnetAsync}>+</button>
 				<button onClick={CounterAction.decrementAsync}>-</button> */}
-
-				<button onClick={counterAction.increment}>+</button>
-				<button onClick={counterAction.decrement}>-</button>
 			</div>
 		);
 	}
