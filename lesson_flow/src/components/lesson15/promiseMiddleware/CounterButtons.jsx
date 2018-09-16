@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as CounterActions from '../../modules/lesson15/Counter';
-import * as PostActions from '../../modules/lesson15/Post';
+import * as CounterActions from '../../../modules/lesson15/Counter.jsx';
+import * as PostActions from '../../../modules/lesson15/promiseMiddleware/Post.jsx';
 
 class CounterButtons extends Component {
 	// 컴포넌트가 처음 마운트 되었을 때
@@ -14,12 +14,13 @@ class CounterButtons extends Component {
 
 	// 상태값이 UPDATE 될때마다 호출됨
 	componentDidUpdate(prevProps, prevState) {
-		//console.log('componentDidUpdate');
+		console.log('componentDidUpdate');
 
 		// 이전 number 와 현재 number 가 다르면 요청을 시작함
 		if (this.props.number !== prevProps.number) {
 			this.loadData();
 		}
+		return false;
 	}
 
 	loadData = () => {
@@ -28,15 +29,15 @@ class CounterButtons extends Component {
 	};
 
 	render() {
-		const { counterAction, number, post, error, loading } = this.props;
+		const { postActions, number, post, error, loading } = this.props;
 
-		console.log('render');
+		console.log('promise render');
 
 		return (
 			<div>
 				<h1>{number}</h1>
-				<button onClick={counterAction.increment}>+</button>
-				<button onClick={counterAction.decrement}>-</button>
+				<button onClick={postActions.increment}>+</button>
+				<button onClick={postActions.decrement}>-</button>
 				{loading ? (
 					<h2>로딩중...</h2>
 				) : error ? (
@@ -57,10 +58,10 @@ class CounterButtons extends Component {
 
 export default connect(
 	state => ({
-		number: state.ModulesReducers.counter,
-		post: state.ModulesReducers.post.get('data').toJS(),
-		loading: state.ModulesReducers.post.get('pending'),
-		error: state.ModulesReducers.post.get('error')
+		number: state.ModulesReducers.postPromise.get('num'),
+		post: state.ModulesReducers.postPromise.get('data').toJS(),
+		loading: state.ModulesReducers.postPromise.get('pending'),
+		error: state.ModulesReducers.postPromise.get('error')
 	}),
 	dispatch => ({
 		counterAction: bindActionCreators(CounterActions, dispatch),

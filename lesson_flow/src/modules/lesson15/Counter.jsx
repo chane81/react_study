@@ -1,4 +1,5 @@
 import { handleActions, createAction } from 'redux-actions';
+import { fromJS } from 'immutable';
 
 const INCREMENT = 'lesson15/INCREMENT';
 const DECREMENT = 'lesson15/DECREMENT';
@@ -14,10 +15,16 @@ export const decrementAsync = () => dispatch => {
 	setTimeout(() => dispatch(decrement()), 1000);
 };
 
+const initialState = fromJS({
+	num: 1
+});
+
 export default handleActions(
 	{
-		[INCREMENT]: (state, action) => state + 1,
-		[DECREMENT]: (state, action) => state - 1
+		[INCREMENT]: (state, action) => {
+			return state.set('num', state.get('num') + 1);
+		},
+		[DECREMENT]: (state, action) => initialState
 	},
-	1
+	initialState
 );
