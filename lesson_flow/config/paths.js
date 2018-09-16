@@ -47,7 +47,7 @@ module.exports = {
 	appSrc: resolveApp('src'),
 	yarnLockFile: resolveApp('yarn.lock'),
 	testsSetup: resolveApp('src/setupTests.js'),
-	appNodeModules: resolveApp('../node_modules'),	// node_module 을 상위로 올림, 다른 프로젝트와 공유
+	appNodeModules: resolveApp('../../node_modules'),	// node_module 을 상위로 올림, 다른 프로젝트와 공유
 	publicUrl: getPublicUrl(resolveApp('package.json')),
 	servedPath: getServedPath(resolveApp('package.json')),
 	styles: resolveApp('src/styles')
