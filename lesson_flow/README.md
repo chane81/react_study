@@ -1,3 +1,7 @@
+## index.js 를 index.jsx 로 읽게 하기 위해 설정 변경
+
+-   appIndexJs: resolveApp('src/index.jsx')
+
 ## node_modules 를 프로젝트별 공유하게 함
 
 -   웹팩 설정 : 아래의 path.js 의 node_modules 의 경로를 수정할것
