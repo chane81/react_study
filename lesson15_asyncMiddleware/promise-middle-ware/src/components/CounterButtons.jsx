@@ -13,23 +13,37 @@ class CounterButtons extends Component {
 
 	// 상태값이 UPDATE 될때마다 호출됨
 	componentDidUpdate(prevProps, prevState) {
-		//console.log('componentDidUpdate');
+		console.log("componentDidUpdate");
 
 		// 이전 number 와 현재 number 가 다르면 요청을 시작함
 		if (this.props.number !== prevProps.number) {
 			this.loadData();
 		}
+		return false;
 	}
 
 	loadData = () => {
 		const { postActions, number } = this.props;
-		postActions.getPost(number);
+		postActions
+			.getPost(number)
+			.then(response => {
+				console.log("loadData-then");
+				console.log(response);
+
+				// -를 계속 클릭해서 number 가 0 이하가 되면 에러가 발생함
+				// 강제 에러 발생시킬 때
+				//throw new Error('강제에러 발생시킴!!');
+			})
+			.catch(error => {
+				console.log("loadData-catch");
+				console.log("ERROR MSG:" + error);
+			});
 	};
 
 	render() {
 		const { postActions, number, post, error, loading } = this.props;
 
-		console.log("thunk render");
+		console.log("promise render");
 
 		return (
 			<div>
@@ -46,6 +60,9 @@ class CounterButtons extends Component {
 						<p>{post.body}</p>
 					</div>
 				)}
+
+				{/* <button onClick={CounterAction.incremnetAsync}>+</button>
+				<button onClick={CounterAction.decrementAsync}>-</button> */}
 			</div>
 		);
 	}
