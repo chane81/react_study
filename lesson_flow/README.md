@@ -13,10 +13,16 @@
 
     -   구문 : --\*.modules-folder "../../node_modules"
 
+## 3. yarn 명령어
+
 -   yarn 의 모듈 설치시 예제(위의 .yarnrc 가 있다면 아래처럼 "--modules-folder" 옵션을 줄 필요 없음)
     -   ex)
         -   yarn install --modules-folder ../../node_modules
         -   yarn add --modules-folder ../../node_modules react-router-dom
         -   yarn remove --modules-folder ../../node_modules react-router-dom
+-   yarn config
+    -   ex)
         -   yarn config set dev-dependencies-folder ../../node_modules
         -   yarn config set modules-folder ../../node_modules
+        -   yarn config list
+        -   yarn cache clean
