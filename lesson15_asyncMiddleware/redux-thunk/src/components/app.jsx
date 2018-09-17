@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { default as Reducers } from '../modules/post';
 import ReduxThunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { default as Counter } from '../components/CounterButtons';
+import { default as Counter } from './CounterButtons';
 
 // 로거 create
 const logger = createLogger();
