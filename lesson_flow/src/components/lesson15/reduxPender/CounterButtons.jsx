@@ -5,11 +5,26 @@ import { bindActionCreators } from 'redux';
 import * as PostActions from '../../../modules/lesson15/reduxPender/Post.jsx';
 
 class CounterButtons extends Component {
+	cancelRequest = null;
+
+	handleCancel = () => {
+		if (this.cancelRequest) {
+			this.cancelRequest();
+			this.cancelRequest = null;
+		}
+	};
+
 	// 컴포넌트가 처음 마운트 되었을 때
 	componentDidMount() {
 		console.log('componentDidMount');
 
 		this.loadData();
+
+		window.addEventListener('keyup', e => {
+			if (e.key === 'Escape') {
+				this.handleCancel();
+			}
+		});
 	}
 
 	// 상태값이 UPDATE 될때마다 호출됨
@@ -27,9 +42,18 @@ class CounterButtons extends Component {
 		const { postActions, number } = this.props;
 
 		try {
-			await postActions.getPost(number);
+			const res = postActions.getPost(number);
+			this.cancelRequest = res.cancel;
+
+			// this.cancelRequest 에 res.cancel 객체를 넣고 그 다음에 await 를 해야한다.
+			// 이유 : 비동기 작업중에 esc 키를 누른것이기 때문에
+
+			await res;
+
+			console.log(this.cancelRequest);
 			console.log('요청 완료 된 다음에 실행됨');
 		} catch (e) {
+			console.log(e);
 			console.log('에러발생!');
 		}
 	};
@@ -64,8 +88,6 @@ class CounterButtons extends Component {
 
 export default connect(
 	state => {
-		console.log(state.ModulesReducers.pender.pending);
-
 		return {
 			number: state.ModulesReducers.postPender.get('num'),
 			post: state.ModulesReducers.postPender.get('data').toJS(),
