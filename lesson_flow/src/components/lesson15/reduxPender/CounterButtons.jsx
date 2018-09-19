@@ -28,14 +28,27 @@ class CounterButtons extends Component {
 	}
 
 	// 상태값이 UPDATE 될때마다 호출됨
-	componentDidUpdate(prevProps, prevState) {
+	// componentDidUpdate(prevProps, prevState) {
+	// 	console.log('componentDidUpdate');
+
+	// 	// 이전 number 와 현재 number 가 다르면 요청을 시작함
+	// 	if (this.props.number !== prevProps.number) {
+	// 		this.loadData();
+	// 	}
+	// 	return false;
+	// }
+
+	shouldComponentUpdate(nextProps, nextState) {
 		console.log('componentDidUpdate');
 
 		// 이전 number 와 현재 number 가 다르면 요청을 시작함
-		if (this.props.number !== prevProps.number) {
+		if (this.props.number > nextProps.number) {
 			this.loadData();
+
+			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	loadData = async () => {
