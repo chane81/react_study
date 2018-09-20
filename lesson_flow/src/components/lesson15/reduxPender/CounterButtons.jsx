@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 //import * as CounterActions from '../../../modules/lesson15/Counter.jsx';
-import * as PostActions from '../../../modules/lesson15/reduxPender/Post.jsx';
+import * as PostActions from "../../../modules/lesson15/reduxPender/Post.jsx";
 
 class CounterButtons extends Component {
 	cancelRequest = null;
@@ -16,12 +16,12 @@ class CounterButtons extends Component {
 
 	// 컴포넌트가 처음 마운트 되었을 때
 	componentDidMount() {
-		console.log('componentDidMount');
+		console.log("componentDidMount");
 
 		this.loadData();
 
-		window.addEventListener('keyup', e => {
-			if (e.key === 'Escape') {
+		window.addEventListener("keyup", e => {
+			if (e.key === "Escape") {
 				this.handleCancel();
 			}
 		});
@@ -39,10 +39,10 @@ class CounterButtons extends Component {
 	// }
 
 	shouldComponentUpdate(nextProps, nextState) {
-		console.log('componentDidUpdate');
+		console.log("componentDidUpdate");
 
 		// 이전 number 와 현재 number 가 다르면 요청을 시작함
-		if (this.props.number > nextProps.number) {
+		if (this.props.number !== nextProps.number) {
 			this.loadData();
 
 			return true;
@@ -64,17 +64,17 @@ class CounterButtons extends Component {
 			await res;
 
 			console.log(this.cancelRequest);
-			console.log('요청 완료 된 다음에 실행됨');
+			console.log("요청 완료 된 다음에 실행됨");
 		} catch (e) {
 			console.log(e);
-			console.log('에러발생!');
+			console.log("에러발생!");
 		}
 	};
 
 	render() {
 		const { postActions, number, post, error, loading } = this.props;
 
-		console.log('promise render');
+		console.log("promise render");
 
 		return (
 			<div>
@@ -102,8 +102,8 @@ class CounterButtons extends Component {
 export default connect(
 	state => {
 		return {
-			number: state.ModulesReducers.postPender.get('num'),
-			post: state.ModulesReducers.postPender.get('data').toJS(),
+			number: state.ModulesReducers.postPender.get("num"),
+			post: state.ModulesReducers.postPender.get("data").toJS(),
 			loading: state.ModulesReducers.pender.pending[PostActions.GET_POST],
 			error: state.ModulesReducers.pender.failure[PostActions.GET_POST]
 		};
