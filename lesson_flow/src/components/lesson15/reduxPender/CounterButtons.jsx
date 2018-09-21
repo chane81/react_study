@@ -42,7 +42,7 @@ class CounterButtons extends Component {
 		console.log('componentDidUpdate');
 
 		// 이전 number 와 현재 number 가 다르면 요청을 시작함
-		if (this.props.number > nextProps.number) {
+		if (this.props.number !== nextProps.number) {
 			this.loadData();
 
 			return true;
