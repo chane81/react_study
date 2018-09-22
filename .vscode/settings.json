@@ -1,3 +1,27 @@
 {
-    "git.ignoreLimitWarning": true
+	"git.ignoreLimitWarning": true,
+
+	// 저장시 포맷터 적용 여부
+	"editor.formatOnSave": true,
+	"editor.tabSize": 4,
+	// 기본 JavaScript 포맷터 사용여부
+	"javascript.format.enable": false,
+	// Prettier 세팅
+	"prettier.eslintIntegration": true,
+	"prettier.printWidth": 80,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"prettier.bracketSpacing": true,
+	"prettier.jsxBracketSameLine": true,
+	"prettier.parser": "flow",
+	"prettier.arrowParens": "avoid",
+	"prettier.proseWrap": "preserve",
+	"prettier.semi": true,
+	"prettier.singleQuote": true,
+	// eslint 설정
+	"eslint.autoFixOnSave": true,
+	// Guide 설정
+	"editor.renderIndentGuides": false,
+	// 테마 설정
+	"workbench.colorTheme": "Cobalt2"
 }
