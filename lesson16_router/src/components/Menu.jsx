@@ -29,6 +29,11 @@ const Menu = () => {
 					</NavLink>
 					{/* <Link to="/about/react">React 소개</Link> */}
 				</li>
+				<li>
+					<NavLink to="/posts" activeStyle={activeStyle}>
+						포스트 목록
+					</NavLink>
+				</li>
 			</ul>
 		</div>
 	);
