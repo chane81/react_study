@@ -21,3 +21,14 @@
         -   yarn config set modules-folder ../../node_modules
         -   yarn config list
         -   yarn cache clean
+
+## 4. eslintrc 설정 관련
+
+-   eslint plugin 의 설정 문서
+
+    -   https://eslint.org/docs/user-guide/configuring#specifying-parser-options
+
+-   옵션수치(https://eslint.org/docs/user-guide/configuring#specifying-parser-options)
+    -   "off" or 0 - turn the rule off
+    -   "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
+    -   "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
