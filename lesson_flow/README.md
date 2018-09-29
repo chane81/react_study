@@ -2,7 +2,7 @@
 
 -   appIndexJs: resolveApp('src/index.jsx')
 
-## 2. node_modules 를 프로젝트별 공유하게 함
+## 2. node_modules 를 프로젝트별 공유하게 함(주의. 경로는 원하는 곳으로 하더라도 꼭! node_modules 로 이름을 지어야한다. conflict 가 발생하므로)
 
 -   yarnrc 설정 파일 추가 : yarn 모듈 설치시 기본적으로 지정된 폴더로 설치되게 하기위해
 
