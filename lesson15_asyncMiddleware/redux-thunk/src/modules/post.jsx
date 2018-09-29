@@ -1,16 +1,16 @@
-import { handleActions, createAction } from "redux-actions";
-import axios from "axios";
-import { fromJS } from "immutable";
+import { handleActions, createAction } from 'redux-actions';
+import axios from 'axios';
+import { fromJS } from 'immutable';
 
 const getPostApi = postId => {
 	return axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 };
 
-const GET_POST_PENDING = "GET_POST_PENDING";
-const GET_POST_SUCCESS = "GET_POST_SUCCESS";
-const GET_POST_FAILURE = "GET_POST_FAILURE";
-const SET_INCREMENT = "SET_INCREMENT";
-const SET_DECREMENT = "SET_DECREMENT";
+const GET_POST_PENDING = 'GET_POST_PENDING';
+const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
+const GET_POST_FAILURE = 'GET_POST_FAILURE';
+const SET_INCREMENT = 'SET_INCREMENT';
+const SET_DECREMENT = 'SET_DECREMENT';
 
 const getPostPending = createAction(GET_POST_PENDING);
 const getPostSuccess = createAction(GET_POST_SUCCESS);
@@ -46,18 +46,18 @@ const initialState = fromJS({
 	pending: false,
 	error: false,
 	data: {
-		title: "",
-		body: ""
+		title: '',
+		body: ''
 	}
 });
 
 export default handleActions(
 	{
 		[SET_INCREMENT]: (state, action) => {
-			return state.merge({ num: state.get("num") + 1 });
+			return state.merge({ num: state.get('num') + 1 });
 		},
 		[SET_DECREMENT]: (state, action) => {
-			return state.merge({ num: state.get("num") - 1 });
+			return state.merge({ num: state.get('num') - 1 });
 		},
 		[GET_POST_PENDING]: (state, action) => {
 			return state.merge({ pending: true, error: false });
