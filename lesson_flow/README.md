@@ -1,3 +1,8 @@
+## 0. GIT 설정
+
+-   파일명에서 대소문자로 변경시에 디폴트는 ignorecase = true 이기 때문에 대소문자로 파일명을 변경해도 GitHub 쪽 소스에는 반영이 되지 않는다.
+-   소스폴더에서 .git\config 파일을 열어 ignorecase = false 로 수정할것!
+
 ## 1. index.js 를 index.jsx 로 읽게 하기 위해 설정 변경
 
 -   appIndexJs: resolveApp('src/index.jsx')
