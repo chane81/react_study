@@ -26,6 +26,7 @@ export default class MarketStore {
 	};
 
 	// 장바구니에서 제거
+	@action
 	take = name => {
 		const itemToTake = this.selectedItems.find(item => item.name === name);
 

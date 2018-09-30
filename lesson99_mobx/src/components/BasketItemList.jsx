@@ -24,8 +24,8 @@ const BasketItemList = ({ items, total, onTake }) => {
 	);
 };
 
-export default inject(({ market }) => ({
-	items: market.selectedItems,
-	total: market.total,
-	onTake: market.take
+export default inject(({ marketStore }) => ({
+	items: marketStore.selectedItems,
+	total: marketStore.total,
+	onTake: marketStore.take
 }))(observer(BasketItemList));

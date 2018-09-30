@@ -4,6 +4,7 @@
 
     -   yarn add mobx mobx-react mobx-react-devtools
     -   yarn add babel-preset-mobx@^1.0.3"
+    -   yarn add mobx-utils
 
 -   데코레이터 문법을 사용하면 아래와 같은 문구가 나오는데 tsconfig.json 파일생성 후 설정을 해주어야 한다., 설정이 완료되면 vs-code 를 재부팅할것!
 
