@@ -54,3 +54,8 @@ class Post extends Component {
 }
 
 export default Post;
+
+// 데코레데터를 쓰지 않는다면 아래처럼
+// export default inject(stores => ({ postStore: stores.postStoreV2 }))(
+// 	observer(Post)
+// );
