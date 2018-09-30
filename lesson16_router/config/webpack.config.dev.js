@@ -28,6 +28,7 @@ const env = getClientEnvironment(publicUrl);
 module.exports = {
 	devtool: 'cheap-module-source-map',
 	entry: {
+    // entry 의 모듈들에 대해 스플리팅작업함, vendor에 서트파티 라이브러리 넣음
 		app: [
 			require.resolve('react-dev-utils/webpackHotDevClient'),
 			paths.appIndexJs
