@@ -19,11 +19,6 @@ export default class PostStoreV2 {
 		);
 	}
 
-	// when(
-	// 	() => {console.log(this.users.state)}
-	// 	() => {console.log(this.users.state)}
-	// );
-
 	@computed
 	get getState() {
 		const stateVal = this.users.state ? this.users.state : null;
