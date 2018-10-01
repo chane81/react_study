@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import AsyncSplitMe from './components/AsyncSplitMe';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-       test
-      </div>
-    );
-  }
+	render() {
+		console.log('랜더링');
+		return (
+			<div className="App">
+				<AsyncSplitMe />
+			</div>
+		);
+	}
 }
 
 export default App;
