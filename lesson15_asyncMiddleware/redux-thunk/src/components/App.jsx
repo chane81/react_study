@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // 리덕스 모듈 IMPORT
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-import { default as Reducers } from "../modules/Post";
-import ReduxThunk from "redux-thunk";
-import { createLogger } from "redux-logger";
-import { default as Counter } from "./CounterButtons";
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { default as Reducers } from '../modules/Post';
+import ReduxThunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import { default as Counter } from './CounterButtons';
 
 // 로거 create
 const logger = createLogger();

@@ -1,5 +1,3 @@
-'use strict';
-
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
@@ -26,9 +24,14 @@ const env = getClientEnvironment(publicUrl);
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 module.exports = {
+	// You may want 'eval' instead if you prefer to see the compiled output in DevTools.
+	// See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
 	devtool: 'cheap-module-source-map',
+	// These are the "entry points" to our application.
+	// This means they will be the "root" imports that are included in JS bundle.
+	// The first two entry points enable "hot" CSS and auto-refreshes for JS.
 	entry: {
-    // entry 의 모듈들에 대해 스플리팅작업함, vendor에 서트파티 라이브러리 넣음
+		// entry 의 모듈들에 대해 스플리팅작업함, vendor에 서트파티 라이브러리 넣음
 		app: [
 			require.resolve('react-dev-utils/webpackHotDevClient'),
 			paths.appIndexJs
@@ -200,6 +203,10 @@ module.exports = {
 			name: 'vendor',
 			filename: 'vendor.js'
 		}),
+		// Makes some environment variables available in index.html.
+		// The public URL is available as %PUBLIC_URL% in index.html, e.g.:
+		// <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+		// In development, this will be an empty string.
 		new InterpolateHtmlPlugin(env.raw),
 		// Generates an `index.html` file with the <script> injected.
 		new HtmlWebpackPlugin({

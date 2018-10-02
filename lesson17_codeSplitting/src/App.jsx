@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Home, About, Posts } from './pages/Index';
+import { Home, About, Posts } from './pages/Index.async.jsx';
 import Menu from './components/Menu';
 class App extends Component {
 	render() {
