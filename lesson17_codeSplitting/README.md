@@ -44,30 +44,24 @@
     -   그렇기 때문에 cross-env 노드 라이브러리를 설치 후에 아래와 같이 import 를 해야한다.
 
         >`상대경로 import 시: import { Post } from './Index';`
-		`cross-env 로 import 시 : import { Post } from 'pages/Index';`
+		>`cross-env 로 import 시 : import { Post } from 'pages/Index';`
 
 	    ```
 	    plugins:  [
     			new webpack.NormalModuleReplacementPlugin(
     				/pages\/Index/,
     		    'pages/Index.async.jsx'
-      ),
-    ```
-
+		      ),```
 -   웹팩 프로덕트쪽 설정을 마쳤다면 로컬에서 빌드
-
     -   yarn build
     -   빌드 후 아래처럼 chunk 파일이 생성이 되어야한다
-
-    ```
-    46.85 KB  build\vendor.js
-    1.79 KB   build\static\js\app.b969cb5e.js
-    1.47 KB   build\static\js\0.e38b78f4.chunk.js
-    1.15 KB   build\static\js\1.9040bf2d.chunk.js
-    332 B     build\static\js\3.17cb88f0.chunk.js
-    266 B     build\static\js\2.3c7ecf2e.chunk.js
-    ```
-
+		```
+		46.85 KB  build\vendor.js
+		1.79 KB   build\static\js\app.b969cb5e.js
+		1.47 KB   build\static\js\0.e38b78f4.chunk.js
+		1.15 KB   build\static\js\1.9040bf2d.chunk.js
+		332 B     build\static\js\3.17cb88f0.chunk.js
+		266 B     build\static\js\2.3c7ecf2e.chunk.js```
 *   빌드 후에 로컬에서 build 버전을 확인하기 위해 serve 를 실행
     -   yarn global add serve
     -   serve -s build
