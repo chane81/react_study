@@ -32,11 +32,11 @@
 
     -   /lib/AsyncComponent.jsx
     -   사용방법
-        ```export const Home = AsyncComponent(() => import('./Home'));
-        <Home />
-        ```
 
--   webpack 의 프로덕션 버전의 설정 을 아래와 같이 추가함(webpack.config.prod.js)
+        > export const Home = AsyncComponent(() => import('./Home'));
+        > <Home />
+
+*   webpack 의 프로덕션 버전의 설정 을 아래와 같이 추가함(webpack.config.prod.js)
 
     -   비동기 모듈 로딩 함수인 Index.async.jsx 를 쓰기위해 Index.jsx 를 replace 를 함
     -   주의: 일반적으로 상대경로를 써서 import 를 할텐데 예를 들면 /pages/Posts.jsx 안에서 /pages/Index.jsx 를 import 를 할 경우 아래와 같이 상대경로를 써서 import 를 할텐데 그렇게 하면 NormalModuleReplacementPlugin 플러그인이 해당 모듈을 realace 하지 못한다.
@@ -52,7 +52,7 @@
       ),
     ```
 
--   웹팩 프로덕트쪽 설정을 마쳤다면 로컬에서 빌드
+*   웹팩 프로덕트쪽 설정을 마쳤다면 로컬에서 빌드
 
     -   yarn build
     -   빌드 후 아래처럼 chunk 파일이 생성이 되어야한다
@@ -66,6 +66,6 @@
     266 B     build\static\js\2.3c7ecf2e.chunk.js
     ```
 
--   빌드 후에 로컬에서 build 버전을 확인하기 위해 serve 를 실행
+*   빌드 후에 로컬에서 build 버전을 확인하기 위해 serve 를 실행
     -   yarn global add serve
     -   serve -s build
