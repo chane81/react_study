@@ -51,7 +51,7 @@
     			new webpack.NormalModuleReplacementPlugin(
     				/pages\/Index/,
     		    'pages/Index.async.jsx'
-		      ),```
+		      )
 -   웹팩 프로덕트쪽 설정을 마쳤다면 로컬에서 빌드
     -   yarn build
     -   빌드 후 아래처럼 chunk 파일이 생성이 되어야한다
