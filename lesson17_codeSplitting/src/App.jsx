@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Home, About, Posts } from './pages/Index.async.jsx';
 import Menu from './components/Menu';
+
+// 일반적 모듈 import
+import { Home, About, Posts } from 'pages/Index';
+
+// 비동기로 모듈 import
+//import { Home, About, Posts } from './pages/Index.async.jsx';
+
 class App extends Component {
 	render() {
 		return (

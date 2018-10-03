@@ -31,7 +31,7 @@ module.exports = {
 	// This means they will be the "root" imports that are included in JS bundle.
 	// The first two entry points enable "hot" CSS and auto-refreshes for JS.
 	entry: {
-		// entry 의 모듈들에 대해 스플리팅작업함, vendor에 서트파티 라이브러리 넣음
+		// 프로덕트에서는 webpackHotDevClient 제거
 		app: [
 			require.resolve('react-dev-utils/webpackHotDevClient'),
 			paths.appIndexJs
@@ -199,6 +199,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		// 청크파일생성 플러그인
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
 			filename: 'vendor.js'
