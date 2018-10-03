@@ -34,7 +34,7 @@
     -   사용방법
 
         > export const Home = AsyncComponent(() => import('./Home'));
-        > <Home />
+        > `<Home />`
 
 *   webpack 의 프로덕션 버전의 설정 을 아래와 같이 추가함(webpack.config.prod.js)
 
@@ -45,14 +45,15 @@
         `상대경로 import 시: import { Post } from './Index';`
         `cross-env 로 import 시 : import { Post } from 'pages/Index';`
 
-    ```
+	    ```
+	    plugins:  [
     			new webpack.NormalModuleReplacementPlugin(
     				/pages\/Index/,
     		    'pages/Index.async.jsx'
       ),
     ```
 
-*   웹팩 프로덕트쪽 설정을 마쳤다면 로컬에서 빌드
+-   웹팩 프로덕트쪽 설정을 마쳤다면 로컬에서 빌드
 
     -   yarn build
     -   빌드 후 아래처럼 chunk 파일이 생성이 되어야한다
