@@ -34,7 +34,7 @@
     -   사용방법
 
         > export const Home = AsyncComponent(() => import('./Home'));
-        > <Home />
+        > `<Home />`
 
 *   webpack 의 프로덕션 버전의 설정 을 아래와 같이 추가함(webpack.config.prod.js)
 
