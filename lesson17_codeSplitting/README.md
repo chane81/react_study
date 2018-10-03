@@ -43,8 +43,8 @@
     -   주의: 일반적으로 상대경로를 써서 import 를 할텐데 예를 들면 /pages/Posts.jsx 안에서 /pages/Index.jsx 를 import 를 할 경우 아래와 같이 상대경로를 써서 import 를 할텐데 그렇게 하면 NormalModuleReplacementPlugin 플러그인이 해당 모듈을 realace 하지 못한다.
     -   그렇기 때문에 cross-env 노드 라이브러리를 설치 후에 아래와 같이 import 를 해야한다.
 
-        `상대경로 import 시: import { Post } from './Index';`
-        `cross-env 로 import 시 : import { Post } from 'pages/Index';`
+        >`상대경로 import 시: import { Post } from './Index';`
+		`cross-env 로 import 시 : import { Post } from 'pages/Index';`
 
 	    ```
 	    plugins:  [
