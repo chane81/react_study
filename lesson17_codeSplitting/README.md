@@ -36,7 +36,13 @@
         > export const Home = AsyncComponent(() => import('./Home'));  
         > `<Home />`
 
-*   webpack 의 프로덕션 버전의 설정 을 아래와 같이 추가함(webpack.config.prod.js)
+-   비동기 Load 모듈로딩 방식은 2 가지를 기입해 놓았음
+
+    -   첫째, react-async-component Hoc 를 써서 async 로드 하는 방식
+    -   둘째, 사용자 커스텀 Hoc 를 만들어 async 로드 하는 방식
+    -   첫번째 방식이 코드가 간결하고 이미 만들어져 있는 모듈이므로 이 방식이 괜찮다는 생각이 든다.
+
+-   webpack 의 프로덕션 버전의 설정 을 아래와 같이 추가함(webpack.config.prod.js)
 
     -   비동기 모듈 로딩 함수인 Index.async.jsx 를 쓰기위해 Index.jsx 를 replace 를 함
     -   주의: 일반적으로 상대경로를 써서 import 를 할텐데 예를 들면 /pages/Posts.jsx 안에서 /pages/Index.jsx 를 import 를 할 경우 아래와 같이 상대경로를 써서 import 를 할텐데 그렇게 하면 NormalModuleReplacementPlugin 플러그인이 해당 모듈을 realace 하지 못한다.

@@ -3,10 +3,10 @@ import { Route } from 'react-router-dom';
 import Menu from './components/Menu';
 
 // 일반적 모듈 import
-import { Home, About, Posts } from 'pages/Index';
+//import { Home, About, Posts } from 'pages/Index';
 
 // 비동기로 모듈 import
-//import { Home, About, Posts } from './pages/Index.async.jsx';
+import { Home, About, Posts } from './pages/Index.async.jsx';
 
 class App extends Component {
 	render() {
