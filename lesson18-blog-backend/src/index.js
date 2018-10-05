@@ -1,18 +1,18 @@
 const Koa = require('koa');
+const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser');
+const api = require('./api');
 
 const app = new Koa();
+const router = new Router();
 
-app.use(() => {
-  console.log(1);
-});
+// 라우터 설정
+router.use('/api', api.routes()); // api 라우트 적용
 
-app.use(() => {
-  console.log(1);
-});
+// 라우터 적용 전에 bodyparser 적용
+app.use(bodyParser());
 
-app.use((ctx) => {
-  ctx.body = 'hello world';
-});
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(4000, () => {
   console.log('listening to port 4000');
