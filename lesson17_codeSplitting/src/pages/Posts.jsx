@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
 // 일반적 모듈 import
-import { Post } from 'pages/Index';
+//import { Post } from 'pages/Index';
 
 // 비동기로 모듈 import
-//import { Post } from './Index.async.jsx';
+import { Post } from './Index.async.jsx';
 
 const Posts = ({ match }) => {
 	return (

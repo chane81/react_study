@@ -13,7 +13,6 @@ class App extends Component {
 		return (
 			<div>
 				<Menu />
-
 				{/* 라우트 설정 */}
 				<Route exact path="/" component={Home} />
 				<Route path="/about/:name?" component={About} />
