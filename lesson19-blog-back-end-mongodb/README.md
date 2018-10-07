@@ -43,8 +43,8 @@
         - PATCH     > UPDATE    : http://localhost:4000/api/posts/:id
         - DELETE    > REMOVE    : http://localhost:4000/api/posts/:id
 
-    - tsconfig.json 설정
-        - test
+    -   tsconfig.json 설정
+        -   test
         ```json
         {
         	"compilerOptions": {
