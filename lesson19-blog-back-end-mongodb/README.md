@@ -43,7 +43,16 @@
         - PATCH     > UPDATE    : http://localhost:4000/api/posts/:id
         - DELETE    > REMOVE    : http://localhost:4000/api/posts/:id
 
+    - tsconfig.json 설정
 
+        ```json
+        {
+        	"compilerOptions": {
+        		"experimentalDecorators": true,
+        		"allowJs": true
+        	}
+        }
+        ```
 
             ```json
                     [
