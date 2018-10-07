@@ -15,6 +15,7 @@
     - yarn add koa
     - yarn add koa-bodyparser
     - yarn add koa-router
+    - yarn add nodemon
     - yarn global add eslint
     - yarn add eslint
     - eslint --init
