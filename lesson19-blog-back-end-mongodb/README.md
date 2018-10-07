@@ -2,8 +2,10 @@
 
     - Express 제작팀이 만든 백엔드서버 프레임워크
     - Express 의 경우는 기존 개발팀이 소유권을 IBM 계열사인 StringLoop 로 넘김
-    - Koa 는 Express 를 리팩토링한 결과물이고 기존 Express에 비해 아키텍쳐가 많이 바뀌어서 Express에서 버전업을 하지 않고 새이름으로 명칭함
-    - 차이점은 Express 에 비해 훨씬 가볍고 Node v7.6 부터 지원하는 async/await 문법을 편하게 사용할 수 있음(Express는 아직 정식으로 async/await 를 지원하지 않음)
+    - Koa 는 Express 를 리팩토링한 결과물이고 기존 Express에 비해 아키텍쳐가 많이 바뀌어서 Express에서 버전업을 하지 않고
+    새이름으로 명칭함
+    - 차이점은 Express 에 비해 훨씬 가볍고 Node v7.6 부터 지원하는 async/await 문법을 편하게 사용할 수 있음
+    (Express는 아직 정식으로 async/await 를 지원하지 않음)
 
 ## koa-bodyparser
 
