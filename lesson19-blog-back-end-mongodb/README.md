@@ -43,7 +43,7 @@
         - PATCH     > UPDATE    : http://localhost:4000/api/posts/:id
         - DELETE    > REMOVE    : http://localhost:4000/api/posts/:id
 
-        - DATA
+
 
             ```json
                     [
