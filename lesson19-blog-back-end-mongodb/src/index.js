@@ -8,9 +8,7 @@ const bodyParser = require('koa-bodyparser');
 // mongo db 관련 모듈
 const mongoose = require('mongoose');
 // const { MongoClient } = require('mongodb');
-const {
-  Schema
-} = mongoose;
+
 
 // api 모듈
 const api = require('./api');
@@ -46,17 +44,6 @@ mongoose.connect(mongoURI, {
 //     db.close();
 //   }
 // });
-
-// mongo db 스키마 세팅
-const Post = new Schema({
-  title: String,
-  body: String,
-  tags: [String],
-  publishedDate: {
-    type: Date,
-    default: new Date() // 현재 날짜 Default Set
-  }
-});
 
 // 라우터 설정
 router.use('/api', api.routes()); // api 라우트 적용
