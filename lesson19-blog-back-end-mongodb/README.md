@@ -18,9 +18,10 @@
     ```
 
 -   .env 설정
-
-    -   PORT=4000
-    -   MONGO_URI=mongodb://localhost/blog
+    ```ini
+    PORT=4000
+    MONGO_URI=mongodb://localhost/blog
+    ```
 
 ## MongoDB 모델
 

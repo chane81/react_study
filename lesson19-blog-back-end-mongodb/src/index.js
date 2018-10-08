@@ -45,7 +45,7 @@ mongoose.connect(mongoURI, {
 //   }
 // });
 
-// 라우터 설정
+// router에 api 라우터를 넣음
 router.use('/api', api.routes()); // api 라우트 적용
 
 // 라우터 적용 전에 bodyparser 적용
