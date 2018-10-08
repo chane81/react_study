@@ -1,61 +1,89 @@
-# Koa 백엔드 + MongoDB 관련
+# MongoDB 관련
 
--   Express 제작팀이 만든 백엔드서버 프레임워크
--   Express 의 경우는 기존 개발팀이 소유권을 IBM 계열사인 StringLoop 로 넘김
--   Koa 는 Express 를 리팩토링한 결과물이고 기존 Express 에 비해 아키텍쳐가 많이 바뀌어서 Express 에서 버전업을 하지 않고 새이름으로 명칭함
--   차이점은 Express 에 비해 훨씬 가볍고 Node v7.6 부터 지원하는 async/await 문법을 편하게 사용할 수 있음
--   Express 는 아직 정식으로 async/await 를 지원하지 않음
+-   만약 클라우드 무료 몽고 DB 를 이용하고 싶다면 https://mlab.com 에서 사용이 가능하다.
+-   MongoDB 관련 모듈은 2 가지가 있으며 현재 프로젝트에는 mongoose 를 적용함
+-   모듈 1: MongoClient
+-   모듈 2: mongoose
 
-## koa-bodyparser
+## MongoDB 설정관련 파일 세팅(.env)
 
--   POST/PUT/PATCH 같은 메서드의 Request Body 에 JSON 형식으로 데이터를 넣어주면, 이를 파싱하여 서버에서 사용할 수 있게 함
+-   .env 설정을 소스내에서 적용하기 위해선 dotenv 모듈을 설치해야한다.
+
+    -   소스코드내에서 쓰기위한 코드
+
+    ```javascript
+    require('dotenv').config(); // 소스내 최상단에 위치
+
+    const { PORT: port = 4000, MONGO_URI: mongoURI } = process.env;
+    ```
+
+-   .env 설정
+
+    -   PORT=4000
+    -   MONGO_URI=mongodb://localhost/blog
+
+## MongoDB 모델
+
+-   MongoDB 의 데이터를 읽고, 쓰고, 수정하기 위해 따로 models 폴더를 만들어 스키마를 만들어 놓는것이 좋다.
+
+    ```javascript
+    const mongoose = require('mongoose');
+
+    const { Schema } = mongoose;
+
+    // mongo db 스키마 세팅
+    const Post = new Schema({
+    	title: String,
+    	body: String,
+    	tags: [String],
+    	publishedDate: {
+    		type: Date,
+    		default: new Date() // 현재 날짜 Default Set
+    	}
+    });
+
+    module.exports = mongoose.model('Post', Post);
+    ```
+
+## 데이터 검증
+
+-   MongoDB 의 ObjectId 에 대한 검증은 mongoose.Types 을 써서 검증 하자
+
+    ```javascript
+    const { ObjectId } = require('mongoose').Types;
+
+    // id 에 대해서 검증
+    exports.checkObjectId = (ctx, next) => {
+    	const { id } = ctx.params;
+
+    	if (!ObjectId.isValid(id)) {
+    		ctx.status = 400;
+    		return null;
+    	}
+
+    	return next();
+    };
+    ```
+
+-   WRITE 를 할때 해당 스키마에 해당하는 데이터의 검증을 위해 joi 모듈을 설치해서 쓰자
+
+    ```javascript
+    const Joi = require('joi');
+
+    const schema = Joi.object().keys({
+    	title: Joi.string().required(),
+    	body: Joi.string().required(),
+    	tags: Joi.array().items(Joi.string().required())
+    });
+
+    const result = Joi.validate(ctx.request.body, schema);
+    ```
+
+## .env 가 git 에 포함되지 않도록 .gitignore 에 구문을 추가
+
+-   .env << 오른쪽 구문 추가
 
 ## Yarn add
 
--   yarn init
--   yarn add koa
--   yarn add koa-bodyparser
--   yarn add koa-router
--   yarn add nodemon
--   yarn global add eslint
--   yarn add eslint
--   eslint --init
-    -   How would you like to configure ESLint? : Use a popular style guide
-    -   Which style guide do you want to follow? : Airbnb
-    -   Do you use React : No
-    -   What format do you want your config file to be in? : JavaScript
-
-## method & api url & data
-
--   의미
-
-    -   GET : 데이터 조회
-    -   POST : 데이터 INSERT
-    -   DELETE : 데이터 DELETE
-    -   PUT : 데이터를 통째로 REPLACE 함
-    -   PATCH : 데이터의 일부분만 UPDATE 함
-
--   URL & DATA
-
-    -   GET > LIST : http://localhost:4000/api/posts
-    -   GET > READ : http://localhost:4000/api/posts/:id
-    -   POST > WRITE : http://localhost:4000/api/posts
-    -   PUT > REPLACE : http://localhost:4000/api/posts/:id
-    -   PATCH > UPDATE : http://localhost:4000/api/posts/:id
-    -   DELETE > REMOVE : http://localhost:4000/api/posts/:id
-
--   tsconfig.json 설정
-    ```json
-    [
-    	{
-    		"id": 1,
-    		"title": "apple",
-    		"body": "red"
-    	},
-    	{
-    		"id": 2,
-    		"title": "banana",
-    		"body": "yellow"
-    	}
-    ]
-    ```
+-   [yarn add MongoClient] 또는 [yarn add mongoose]
+-   yarn add dotenv
