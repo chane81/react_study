@@ -1,4 +1,4 @@
-## Koa
+# Koa 백엔드 관련
 
     - Express 제작팀이 만든 백엔드서버 프레임워크
     - Express 의 경우는 기존 개발팀이 소유권을 IBM 계열사인 StringLoop 로 넘김
@@ -11,9 +11,18 @@
 
 ## Yarn add
 
+    - yarn init
     - yarn add koa
     - yarn add koa-bodyparser
     - yarn add koa-router
+    - yarn add nodemon
+    - yarn global add eslint
+    - yarn add eslint
+    - eslint --init
+        - How would you like to configure ESLint? : Use a popular style guide
+        - Which style guide do you want to follow? : Airbnb
+        - Do you use React : No
+        - What format do you want your config file to be in? : JavaScript
 
 ## method & api url & data
 
