@@ -14,10 +14,10 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
-const paths = require('./paths');
-const getClientEnvironment = require('./env');
 const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const paths = require('./paths');
+const getClientEnvironment = require('./env');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -49,38 +49,37 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [{
-      loader: MiniCssExtractPlugin.loader,
-      options: Object.assign({},
-        shouldUseRelativeAssetPaths ? {
-          publicPath: '../../'
-        } : undefined
-      ),
+    loader: MiniCssExtractPlugin.loader,
+    options: Object.assign({},
+      shouldUseRelativeAssetPaths ? {
+        publicPath: '../../'
+      } : undefined),
+  },
+  {
+    loader: require.resolve('css-loader'),
+    options: cssOptions,
+  },
+  {
+    // Options for PostCSS as we reference these options twice
+    // Adds vendor prefixing based on your specified browser support in
+    // package.json
+    loader: require.resolve('postcss-loader'),
+    options: {
+      // Necessary for external CSS imports to work
+      // https://github.com/facebook/create-react-app/issues/2677
+      ident: 'postcss',
+      plugins: () => [
+        require('postcss-flexbugs-fixes'),
+        require('postcss-preset-env')({
+          autoprefixer: {
+            flexbox: 'no-2009',
+          },
+          stage: 3,
+        }),
+      ],
+      sourceMap: shouldUseSourceMap,
     },
-    {
-      loader: require.resolve('css-loader'),
-      options: cssOptions,
-    },
-    {
-      // Options for PostCSS as we reference these options twice
-      // Adds vendor prefixing based on your specified browser support in
-      // package.json
-      loader: require.resolve('postcss-loader'),
-      options: {
-        // Necessary for external CSS imports to work
-        // https://github.com/facebook/create-react-app/issues/2677
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          require('postcss-preset-env')({
-            autoprefixer: {
-              flexbox: 'no-2009',
-            },
-            stage: 3,
-          }),
-        ],
-        sourceMap: shouldUseSourceMap,
-      },
-    },
+  },
   ];
   if (preProcessor) {
     loaders.push({
@@ -114,10 +113,9 @@ module.exports = {
     filename: 'static/js/[name].[chunkhash:8].js',
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
-    publicPath: publicPath,
+    publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: info =>
-      path
+    devtoolModuleFilenameTemplate: info => path
       .relative(paths.appSrc, info.absoluteResourcePath)
       .replace(/\\/g, '/'),
   },
@@ -168,16 +166,16 @@ module.exports = {
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           parser: safePostCssParser,
-          map: shouldUseSourceMap ?
-            {
+          map: shouldUseSourceMap
+            ? {
               // `inline: false` forces the sourcemap to be output into a
               // separate file
               inline: false,
               // `annotation: true` appends the sourceMappingURL to the end of
               // the css file, helping the browser find the sourcemap
               annotation: true,
-            } :
-            false,
+            }
+            : false,
         },
       }),
     ],
@@ -369,16 +367,11 @@ module.exports = {
             test: sassRegex,
             exclude: sassModuleRegex,
             loader: getStyleLoaders({
-                importLoaders: 2,
-                sourceMap: shouldUseSourceMap,
-                includePaths: [paths.globalStyles]
-              },
-              'sass-loader'
-            ),
-            // Don't consider CSS imports dead code even if the
-            // containing package claims to have no side effects.
-            // Remove this when webpack adds a warning or an error for this.
-            // See https://github.com/webpack/webpack/issues/6571
+              importLoaders: 2,
+              sourceMap: shouldUseSourceMap,
+              includePaths: [paths.globalStyles]
+            },
+            'sass-loader'),
             sideEffects: true,
           },
           // Adds support for CSS Modules, but using SASS
@@ -386,13 +379,12 @@ module.exports = {
           {
             test: sassModuleRegex,
             loader: getStyleLoaders({
-                importLoaders: 2,
-                sourceMap: shouldUseSourceMap,
-                modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
-              },
-              'sass-loader'
-            ),
+              importLoaders: 2,
+              sourceMap: shouldUseSourceMap,
+              modules: true,
+              getLocalIdent: getCSSModuleLocalIdent,
+            },
+            'sass-loader'),
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
@@ -461,7 +453,7 @@ module.exports = {
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
-      publicPath: publicPath,
+      publicPath,
     }),
     // Moment.js is an extremely popular library that bundles large locale files
     // by default due to how Webpack interprets its code. This is a practical
@@ -475,7 +467,7 @@ module.exports = {
       clientsClaim: true,
       exclude: [/\.map$/, /asset-manifest\.json$/],
       importWorkboxFrom: 'cdn',
-      navigateFallback: publicUrl + '/index.html',
+      navigateFallback: `${publicUrl }/index.html`,
       navigateFallbackBlacklist: [
         // Exclude URLs starting with /_, as they're likely an API call
         new RegExp('^/_'),

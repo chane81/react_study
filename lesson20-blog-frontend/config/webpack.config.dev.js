@@ -7,11 +7,11 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
-const getClientEnvironment = require('./env');
-const paths = require('./paths');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const paths = require('./paths');
+const getClientEnvironment = require('./env');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -102,10 +102,9 @@ module.exports = {
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'static/js/[name].chunk.js',
     // This is the URL that app is served from. We use "/" in development.
-    publicPath: publicPath,
+    publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: info =>
-      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+    devtoolModuleFilenameTemplate: info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
   optimization: {
     // Automatically split vendor and commons
@@ -126,7 +125,7 @@ module.exports = {
     // https://github.com/facebook/create-react-app/issues/253
     modules: ['node_modules'].concat(
       // It is guaranteed to exist because we tweak it in `env.js`
-      process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
+      process.env.NODE_PATH.split(path.delimiter).filter(Boolean),
     ),
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
@@ -165,8 +164,8 @@ module.exports = {
       // Disable require.ensure as it's not a standard language feature.
       {
         parser: {
-          requireEnsure: false
-        }
+          requireEnsure: false,
+        },
       },
 
       // First, run the linter.
@@ -181,7 +180,7 @@ module.exports = {
 
           },
           loader: require.resolve('eslint-loader'),
-        }, ],
+        }],
         include: paths.appSrc,
       },
       {
@@ -208,7 +207,7 @@ module.exports = {
             loader: require.resolve('babel-loader'),
             options: {
               customize: require.resolve(
-                'babel-preset-react-app/webpack-overrides'
+                'babel-preset-react-app/webpack-overrides',
               ),
 
               plugins: [
@@ -245,7 +244,7 @@ module.exports = {
                 [
                   require.resolve('babel-preset-react-app/dependencies'),
                   {
-                    helpers: true
+                    helpers: true,
                   },
                 ],
               ],
@@ -293,7 +292,7 @@ module.exports = {
             exclude: sassModuleRegex,
             use: getStyleLoaders({
               importLoaders: 2,
-              includePaths: [paths.globalStyles]
+              includePaths: [paths.globalStyles],
             }, 'sass-loader'),
           },
           // Adds support for CSS Modules, but using SASS
@@ -301,12 +300,11 @@ module.exports = {
           {
             test: sassModuleRegex,
             use: getStyleLoaders({
-                importLoaders: 2,
-                modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
-              },
-              'sass-loader'
-            ),
+              importLoaders: 2,
+              modules: true,
+              getLocalIdent: getCSSModuleLocalIdent,
+            },
+            'sass-loader'),
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
@@ -369,7 +367,7 @@ module.exports = {
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
-      publicPath: publicPath,
+      publicPath,
     }),
   ],
 
