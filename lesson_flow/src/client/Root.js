@@ -2,32 +2,19 @@ import React from 'react';
 import App from '../shared/App';
 
 // 리덕스 모듈 IMPORT
-import {
-	createStore,
-	applyMiddleware
-} from 'redux';
-import {
-	Provider
-} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
 
 // 리듀서 모듈 IMPORT
-import {
-	combineReducers
-} from 'redux';
-import {
-	default as Lesson13Reducers
-} from '../reducers/index';
-import {
-	default as ModulesReducers
-} from '../modules/index';
+import {combineReducers} from 'redux';
+import {default as Lesson13Reducers} from '../reducers/index';
+import {default as ModulesReducers} from '../modules/index';
 
 // 테스트용 사용자 커스텀 로거 미들웨어 불러오기
 //import LoggerMiddleware from '../components/lesson15/LoggerMiddleware';
 
 // 로거 모듈 IMPORT
-import {
-	createLogger
-} from 'redux-logger';
+import {createLogger} from 'redux-logger';
 
 // 비동기 모듈 IMPORT
 // import ReduxThunk from 'redux-thunk';
@@ -58,19 +45,11 @@ const store = createStore(
 	applyMiddleware(logger, penderMiddleware())
 );
 
-const Root = ({
-	baseUrl
-}) => {
-	return ( <
-		Provider store = {
-			store
-		} >
-		<
-		App baseUrl = {
-			baseUrl
-		}
-		/> <
-		/Provider>
+const Root = ({baseUrl}) => {
+	return (
+		<Provider store = {store}>
+			<App baseUrl = { baseUrl} />
+		</Provider>
 	);
 };
 

@@ -7,7 +7,9 @@ import { pender } from 'redux-pender';
 // action creators
 
 // initial state
-const initialState = Map({});
+const initialState = Map({
+
+});
 
 // reducer
 export default handleActions({
