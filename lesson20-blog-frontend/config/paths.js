@@ -17,9 +17,8 @@ function ensureSlash(inputPath, needsSlash) {
     return inputPath.substr(0, inputPath.length - 1);
   } if (!hasSlash && needsSlash) {
     return `${inputPath}/`;
-  } 
-    return inputPath;
-  
+  }
+  return inputPath;
 }
 
 const getPublicUrl = appPackageJson => envPublicUrl || require(appPackageJson).homepage;
@@ -52,5 +51,5 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
-  globalStyles: resolveApp('src/styles'),
+  globalStyles: resolveApp('src/styles')
 };

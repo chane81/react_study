@@ -134,18 +134,61 @@
   ```
 
 - config/paths.js 에 아래 코드 추가
+
   ```js
   globalStyles: resolveApp('src/styles');
   ```
+
+- config/webpack.config.dev.js 또는 config.prod.js 의 상단부에 있는 getStyleLoaders 설정
+
+  - 아래 sass-loader 을 추가하고 includePaths 를 설정한다.
+
+  ```js
+  const getStyleLoaders = (cssOptions, preProcessor) => {
+    const loaders = [
+      require.resolve('style-loader'),
+      {
+        loader: require.resolve('css-loader'),
+        options: cssOptions,
+      },
+      {
+        loader: require.resolve('postcss-loader'),
+        options: {
+          ident: 'postcss',
+          plugins: () => [
+            require('postcss-flexbugs-fixes'),
+            require('postcss-preset-env')({
+              autoprefixer: {
+                flexbox: 'no-2009',
+              },
+              stage: 3,
+            }),
+          ],
+        },
+      },
+      // 아래 sass-loader 을 추가하고 includePaths 를 설정한다.
+      {
+        loader: require.resolve('sass-loader'),
+        options: {
+          includePaths: [paths.globalStyles],
+        },
+      },
+    ];
+    if (preProcessor) {
+      loaders.push(require.resolve(preProcessor));
+    }
+    return loaders;
+  };
+  ```
+
 - config/webpack.config.dev.js 에 sass 로더 설정
   ```js
         {
           test: sassRegex,
           exclude: sassModuleRegex,
           use: getStyleLoaders({
-            importLoaders: 2,
-            includePaths: [paths.globalStyles],
-          }, 'sass-loader'),
+            importLoaders: 2
+          }),
         }
   ```
 - config/webpack.config.prod.js 에 sass 로더 설정
@@ -155,10 +198,8 @@
           exclude: sassModuleRegex,
           loader: getStyleLoaders({
             importLoaders: 2,
-            sourceMap: shouldUseSourceMap,
-            includePaths: [paths.globalStyles]
-          },
-          'sass-loader'),
+            sourceMap: shouldUseSourceMap
+          }),
           sideEffects: true,
         }
   ```

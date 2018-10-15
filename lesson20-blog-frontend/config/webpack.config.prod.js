@@ -48,38 +48,47 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
-  const loaders = [{
-    loader: MiniCssExtractPlugin.loader,
-    options: Object.assign({},
+  const loaders = [
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: Object.assign({
+
+      },
       shouldUseRelativeAssetPaths ? {
         publicPath: '../../'
       } : undefined),
-  },
-  {
-    loader: require.resolve('css-loader'),
-    options: cssOptions,
-  },
-  {
-    // Options for PostCSS as we reference these options twice
-    // Adds vendor prefixing based on your specified browser support in
-    // package.json
-    loader: require.resolve('postcss-loader'),
-    options: {
-      // Necessary for external CSS imports to work
-      // https://github.com/facebook/create-react-app/issues/2677
-      ident: 'postcss',
-      plugins: () => [
-        require('postcss-flexbugs-fixes'),
-        require('postcss-preset-env')({
-          autoprefixer: {
-            flexbox: 'no-2009',
-          },
-          stage: 3,
-        }),
-      ],
-      sourceMap: shouldUseSourceMap,
     },
-  },
+    {
+      loader: require.resolve('css-loader'),
+      options: cssOptions,
+    },
+    {
+      // Options for PostCSS as we reference these options twice
+      // Adds vendor prefixing based on your specified browser support in
+      // package.json
+      loader: require.resolve('postcss-loader'),
+      options: {
+        // Necessary for external CSS imports to work
+        // https://github.com/facebook/create-react-app/issues/2677
+        ident: 'postcss',
+        plugins: () => [
+          require('postcss-flexbugs-fixes'),
+          require('postcss-preset-env')({
+            autoprefixer: {
+              flexbox: 'no-2009',
+            },
+            stage: 3,
+          }),
+        ],
+        sourceMap: shouldUseSourceMap,
+      },
+    },
+    {
+      loader: require.resolve('sass-loader'),
+      options: {
+        includePaths: [paths.globalStyles]
+      }
+    }
   ];
   if (preProcessor) {
     loaders.push({
@@ -368,10 +377,8 @@ module.exports = {
             exclude: sassModuleRegex,
             loader: getStyleLoaders({
               importLoaders: 2,
-              sourceMap: shouldUseSourceMap,
-              includePaths: [paths.globalStyles]
-            },
-            'sass-loader'),
+              sourceMap: shouldUseSourceMap
+            }),
             sideEffects: true,
           },
           // Adds support for CSS Modules, but using SASS
@@ -383,8 +390,7 @@ module.exports = {
               sourceMap: shouldUseSourceMap,
               modules: true,
               getLocalIdent: getCSSModuleLocalIdent,
-            },
-            'sass-loader'),
+            }),
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
@@ -467,7 +473,7 @@ module.exports = {
       clientsClaim: true,
       exclude: [/\.map$/, /asset-manifest\.json$/],
       importWorkboxFrom: 'cdn',
-      navigateFallback: `${publicUrl }/index.html`,
+      navigateFallback: `${publicUrl}/index.html`,
       navigateFallbackBlacklist: [
         // Exclude URLs starting with /_, as they're likely an API call
         new RegExp('^/_'),

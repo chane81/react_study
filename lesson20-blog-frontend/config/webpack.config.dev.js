@@ -57,6 +57,12 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
         ],
       },
     },
+    {
+      loader: require.resolve('sass-loader'),
+      options: {
+        includePaths: [paths.globalStyles]
+      }
+    }
   ];
   if (preProcessor) {
     loaders.push(require.resolve(preProcessor));
@@ -292,8 +298,7 @@ module.exports = {
             exclude: sassModuleRegex,
             use: getStyleLoaders({
               importLoaders: 2,
-              includePaths: [paths.globalStyles],
-            }, 'sass-loader'),
+            }),
           },
           // Adds support for CSS Modules, but using SASS
           // using the extension .module.scss or .module.sass
@@ -303,8 +308,7 @@ module.exports = {
               importLoaders: 2,
               modules: true,
               getLocalIdent: getCSSModuleLocalIdent,
-            },
-            'sass-loader'),
+            }),
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.

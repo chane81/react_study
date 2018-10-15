@@ -1,4 +1,4 @@
-@import 'style/utils.scss';
+@import 'utils';
 
 .header {
   background: $oc-blue-6;
@@ -12,7 +12,7 @@
 
     // 내부 아이템 세로 가운데 정렬
     display: flex;
-    flex-direction: row;
+    //flex-direction: row;
     align-items: center;
 
     // 반응형 레이아웃
