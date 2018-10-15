@@ -2932,6 +2932,12 @@ eslint-plugin-jsx-a11y@6.1.1:
     has "^1.0.3"
     jsx-ast-utils "^2.0.1"
 
+eslint-plugin-prettier@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.0.0.tgz#f6b823e065f8c36529918cdb766d7a0e975ec30c"
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
+
 eslint-plugin-react@7.11.1:
   version "7.11.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.11.1.tgz#c01a7af6f17519457d6116aa94fc6d2ccad5443c"
@@ -3309,6 +3315,10 @@ fast-deep-equal@^1.0.0:
 fast-deep-equal@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
+
+fast-diff@^1.1.2:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
 
 fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
@@ -4131,6 +4141,10 @@ imurmurhash@^0.1.4:
 in-publish@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/in-publish/-/in-publish-2.0.0.tgz#e20ff5e3a2afc2690320b6dc552682a9c7fadf51"
+
+include-media@^1.4.9:
+  version "1.4.9"
+  resolved "https://registry.yarnpkg.com/include-media/-/include-media-1.4.9.tgz#d0020b7be3eb2d54868a20943595ce380e0bc43b"
 
 indent-string@^2.1.0:
   version "2.1.0"
@@ -5964,6 +5978,10 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
+open-color@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/open-color/-/open-color-1.6.3.tgz#ff0d62983bcdda8048b776daedda2237e8a322ed"
+
 opn@5.4.0, opn@^5.1.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
@@ -6873,6 +6891,12 @@ prettier-eslint@^8.8.2:
     typescript "^2.5.1"
     typescript-eslint-parser "^16.0.0"
     vue-eslint-parser "^2.0.2"
+
+prettier-linter-helpers@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prettier-linter-helpers/-/prettier-linter-helpers-1.0.0.tgz#d23d41fe1375646de2d0104d3454a3008802cf7b"
+  dependencies:
+    fast-diff "^1.1.2"
 
 prettier@^1.14.2, prettier@^1.7.0:
   version "1.14.3"

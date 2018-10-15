@@ -83,12 +83,14 @@
   ```
 
 - .eslintrc.json 설정
+
   ```json
   {
     "parser": "babel-eslint",
     "extends": "airbnb",
     "plugins": ["react", "jsx-a11y", "import"],
     "rules": {
+      "react/jsx-one-expression-per-line": 0,
       "linebreak-style": 0,
       "no-use-before-define": 0,
       "no-param-reassign": 0,
