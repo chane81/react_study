@@ -193,7 +193,7 @@
   ```
 - config/webpack.config.prod.js 에 sass 로더 설정
   ```js
-  {
+        {
           test: sassRegex,
           exclude: sassModuleRegex,
           loader: getStyleLoaders({
