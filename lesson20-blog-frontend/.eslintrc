@@ -33,8 +33,7 @@
     ],
     "jsx-a11y/anchor-is-valid": ["warn", {
       "components": ["Link"],
-      "specialLink": ["to", "onClick"],
-      "aspect": ["noHref", "invalidHref", "preferButton"]
+      "specialLink": ["to"]
     }]
   },
   "settings": {

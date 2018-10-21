@@ -9,14 +9,14 @@ const cx = classNames.bind(styles);
 const PostItem = () => (
   <div className={cx('post-item')}>
     <h2>
-      <a href="#1">타이틀</a>
+      <a href="#/">타이틀</a>
     </h2>
     <div className={cx('date')}>2018-10-21</div>
     <p>내용</p>
     <div className={cx('tags')}>
-      <a href="#1">#태그</a>
-      <a href="#1">#태그</a>
-      <a href="#1">#태그</a>
+      <a href="#/">#태그</a>
+      <a href="#/">#태그</a>
+      <a href="#/">#태그</a>
     </div>
   </div>
 );
