@@ -30,7 +30,12 @@
       {
         "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]
       }
-    ]
+    ],
+    "jsx-a11y/anchor-is-valid": ["warn", {
+      "components": ["Link"],
+      "specialLink": ["to", "onClick"],
+      "aspect": ["noHref", "invalidHref", "preferButton"]
+    }]
   },
   "settings": {
     "import/resolver": {
