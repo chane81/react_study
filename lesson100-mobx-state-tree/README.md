@@ -1,5 +1,45 @@
 # mobx-state-tree 사용
 
+## mst 에서 async 호출사용 방법
+
+- axios 를 쓸 때 기준으로 아래와 같이 flow 와 function\* () 을 action 함수에 넣어준다
+- axios 호출시에 yield 를 앞부분에 넣어 사용한다.
+
+  ```js
+  .actions(self => ({
+    getUsers: flow(function* () {
+      try {
+        self.status = 'pending';
+
+        const url = `https://randomuser.me/api/?results=${self.count}`;
+        const res = yield axios.get(url);
+        const result = res.data.results;
+
+        self.status = 'success';
+
+        self.data = result;
+      } catch (error) {
+        self.status = 'error';
+        console.log(error);
+      }
+    })
+  }));
+  ```
+
+## mst 에서 모델 방식 참조
+
+- 위와 같이 complex 타입의 api 호출시에 모델 타입을 명시적 타입이 아닌 fozen() 타입을 쓰기도 한다.
+
+  ```js
+  .model('UserList', {
+    // 1. Complex 타입으로 쓸 때 흔히 쓰는 방식 frozen
+    dataFrozen: types.frozen([]),
+
+    // 2. 아래와 같이 쓸경우 User 모델에 데이터를 수동으로 주입
+    dataGeneral: types.array(User)
+  })
+  ```
+
 ## Decorator 를 사용하기 위한 작업
 
 - yarn eject
@@ -107,7 +147,3 @@
     }
   }
   ```
-
-```
-
-```
