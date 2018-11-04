@@ -99,6 +99,7 @@
     "plugins": ["react", "jsx-a11y", "import"],
     "rules": {
       "react/require-default-props": 0,
+      "func-names": 0,
       "react/jsx-one-expression-per-line": 0,
       "linebreak-style": 0,
       "no-use-before-define": 0,
@@ -106,6 +107,7 @@
       "no-unused-vars": 1,
       "no-console": 0,
       "comma-dangle": 0,
+      "react/no-array-index-key": 0,
       "object-curly-newline": [
         "error",
         {
