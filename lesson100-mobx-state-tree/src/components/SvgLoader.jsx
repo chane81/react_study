@@ -7,8 +7,8 @@ const SvgLoader = () => (
     xmlns="http://www.w3.org/2000/svg"
     x="0px"
     y="0px"
-    width="40px"
-    height="40px"
+    width="100px"
+    height="100px"
     viewBox="0 0 40 40"
     enableBackground="new 0 0 40 40"
     xmlSpace="preserve"
@@ -31,7 +31,7 @@ const SvgLoader = () => (
         type="rotate"
         from="0 20 20"
         to="360 20 20"
-        dur="0.5s"
+        dur="1s"
         repeatCount="indefinite"
       />
     </path>
