@@ -17,6 +17,12 @@ const User = types
     }),
     email: types.string,
     phone: types.string,
+    dob: types.model({
+      age: types.number
+    }),
+    location: types.model({
+      city: types.string
+    }),
     picture: types.model({
       large: types.string,
       medium: types.string,

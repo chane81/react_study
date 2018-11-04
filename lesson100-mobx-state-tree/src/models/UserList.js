@@ -6,7 +6,12 @@ const UserList = types
   .model('UserList', {
     status: types.string,
     count: types.number,
-    data: types.array(User)
+
+    // 1. Complex 타입으로 쓸 때 흔히 쓰는 방식 frozen
+    data: types.frozen([])
+
+    // 2. 아래와 같이 쓸경우 User 모델에 데이터를 수동으로 주입
+    // data: types.array(User)
   })
   .actions(self => ({
     setUserCount(userCount) {
@@ -23,20 +28,31 @@ const UserList = types
         const result = res.data.results;
 
         self.status = 'success';
-        self.data = result.map(item => ({
-          name: {
-            title: item.name.title,
-            first: item.name.first,
-            last: item.name.last
-          },
-          email: item.email,
-          phone: item.phone,
-          picture: {
-            large: item.picture.large,
-            medium: item.picture.medium,
-            thumbnail: item.picture.thumbnail
-          }
-        }));
+
+        // 1. [types.frozen 방식 모델에 넣을 때]
+        self.data = result;
+
+        // 2. [type.array(User) 방식 모델에 넣을 때]
+        // self.data = result.map(item => ({
+        //   name: {
+        //     title: item.name.title,
+        //     first: item.name.first,
+        //     last: item.name.last
+        //   },
+        //   email: item.email,
+        //   phone: item.phone,
+        //   dob: {
+        //     age: item.dob.age
+        //   },
+        //   location: {
+        //     city: item.location.city
+        //   },
+        //   picture: {
+        //     large: item.picture.large,
+        //     medium: item.picture.medium,
+        //     thumbnail: item.picture.thumbnail
+        //   }
+        // }));
       } catch (error) {
         self.status = 'error';
         console.log(error);

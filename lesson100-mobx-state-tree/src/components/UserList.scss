@@ -20,8 +20,8 @@
   background-image: linear-gradient(to bottom right, #f8f9fa, #dee2e6);
 
   .picture {
-    width: 50px;
-    height: 50px;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
   }
 
@@ -29,8 +29,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     background: #e5dbff;
     margin: 1rem 0.5rem;
@@ -45,11 +45,12 @@
     border: 1px solid gray;
     border-radius: 15px;
     margin: 0.5rem 0.5rem;
-    height: 70px;
+    height: 85px;
     width: 30%;
     background: #9775fa;
     color: white;
     box-shadow: 5px 10px 20px rgba(#868e96, 0.5);
     font-family: 'Quicksand', sans-serif;
+    min-width: 18rem;
   }
 }

@@ -67,6 +67,8 @@ class ItemList extends Component {
               <div>
                 <div>First Name: {user.name.first}</div>
                 <div>Last Name: {user.name.last}</div>
+                <div>Age: {user.dob.age}</div>
+                <div>City: {user.location.city}</div>
               </div>
             </div>
           ))}
