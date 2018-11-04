@@ -19,7 +19,7 @@ const Item = ({ item }) => (
 );
 
 Item.propTypes = {
-  item: PropTypes.objectOf(PropTypes.any),
+  item: PropTypes.objectOf(PropTypes.any)
 };
 
 export default observer(Item);

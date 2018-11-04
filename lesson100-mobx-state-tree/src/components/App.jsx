@@ -13,7 +13,7 @@ const App = ({ invoice, userList }) => (
 
 App.propTypes = {
   invoice: PropTypes.objectOf(PropTypes.any),
-  userList: PropTypes.objectOf(PropTypes.any),
+  userList: PropTypes.objectOf(PropTypes.any)
 };
 
 export default App;
