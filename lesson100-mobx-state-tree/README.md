@@ -1,44 +1,113 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# mobx-state-tree 사용
 
-## Available Scripts
+## Decorator 를 사용하기 위한 작업
 
-In the project directory, you can run:
+- yarn eject
+- yarn add babel-preset-mobx
+- package.json "babel" 에 아래와 같이 수정
 
-### `npm start`
+  ```json
+  "babel": {
+    "presets": [
+    "react-app",
+    "mobx"
+    ]
+  }
+  ```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- jsconfig.json 파일을 추가하고 내용을 아래와 같이 입력
+- mobx 의 decorator 기능을 쓸때 파싱에러를 막기 위해 experimentalDecorators 가 필요하다.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+  ```json
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./src",
+    "experimentalDecorators": true
+   }
+  ```
 
-### `npm test`
+## 상태추적 tools
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- import
 
-### `npm run build`
+  ```js
+  import { onPatch } from 'mobx-state-tree';
+  import makeInspectable from 'mobx-devtools-mst';
+  ```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- index.jsx 에 아래 구문 추가
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+  ```js
+  // 크롬 console 에 해당값의 변화가 있을 때 나타나게 함
+  onPatch(invoice, patch => {
+    console.log(patch);
+  });
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  // 크롬 mobx tools 에 MST 로 상태변화를 볼 수 있게 한다.
+  makeInspectable(invoice);
+  ```
 
-### `npm run eject`
+## eslint 설정
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- yarn
+  - yarn add eslint-config-airbnb
+- eslintrc
+  ```json
+  {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": ["react", "jsx-a11y", "import"],
+    "rules": {
+      "react/require-default-props": 0,
+      "react/jsx-one-expression-per-line": 0,
+      "linebreak-style": 0,
+      "no-use-before-define": 0,
+      "no-param-reassign": 0,
+      "no-unused-vars": 1,
+      "no-console": 0,
+      "comma-dangle": 0,
+      "object-curly-newline": [
+        "error",
+        {
+          "ObjectExpression": "always",
+          "ObjectPattern": {
+            "multiline": true
+          },
+          "ImportDeclaration": "never",
+          "ExportDeclaration": {
+            "multiline": true,
+            "minProperties": 3
+          }
+        }
+      ],
+      "no-underscore-dangle": [
+        1,
+        {
+          "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]
+        }
+      ],
+      "jsx-a11y/anchor-is-valid": [
+        "warn",
+        {
+          "components": ["Link"],
+          "specialLink": ["to"]
+        }
+      ]
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "moduleDirectory": ["node_modules", "src"]
+        }
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  }
+  ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
