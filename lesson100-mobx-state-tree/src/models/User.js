@@ -8,14 +8,6 @@ import { types } from 'mobx-state-tree';
 //     avatar: types.string
 //   });
 
-// const User = types
-//   .model('User', {
-//     userId: types.number,
-//     id: types.number,
-//     title: types.string,
-//     body: types.string
-//   });
-
 const User = types
   .model('User', {
     name: types.model({

@@ -9,11 +9,12 @@ import UserList from './models/UserList';
 
 const invoice = Invoice.create({
   currency: 'CAD',
-  is_paid: false,
+  is_paid: false
 });
 
 const userList = UserList.create({
   status: 'none',
+  count: 10
 });
 
 // 크롬 console 에 해당값의 변화가 있을 때 나타나게 함
@@ -26,7 +27,7 @@ makeInspectable(invoice);
 
 ReactDOM.render(
   <App invoice={invoice} userList={userList} />,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 
 serviceWorker.unregister();

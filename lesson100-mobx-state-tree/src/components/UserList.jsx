@@ -10,24 +10,36 @@ const cx = classNames.bind(styles);
 @observer
 class ItemList extends Component {
   static propTypes = {
-    userList: PropTypes.objectOf(PropTypes.any),
+    userList: PropTypes.objectOf(PropTypes.any)
   };
 
   render() {
     const { userList } = this.props;
 
+    const handlerClick = () => {
+      userList.setUserCount(parseInt(this.userCountInput.value, 10));
+      userList.getUsers();
+    };
+
     return (
       <div>
         <h2>UserList</h2>
         <div>AXIOS 상태값: {userList.status}</div>
-        <button
-          type="button"
-          onClick={() => {
-            userList.getUsers();
-          }}
-        >
-          사용자정보 Get
-        </button>
+        <div>
+          개수:
+          <input
+            type="text"
+            ref={(input) => {
+              this.userCountInput = input;
+            }}
+            id="txtCount"
+            defaultValue={userList.count}
+          />
+          <button type="button" onClick={handlerClick}>
+            사용자정보 Get
+          </button>
+        </div>
+
         <br />
 
         {userList.status === 'pending' && (
@@ -39,7 +51,7 @@ class ItemList extends Component {
         <div
           className={cx('user-list', {
             noneDisplay:
-              userList.status === 'pending' || userList.status === 'error',
+              userList.status === 'pending' || userList.status === 'error'
           })}
         >
           {userList.data.map((user, i) => (
@@ -48,7 +60,7 @@ class ItemList extends Component {
                 <div
                   className={cx('picture')}
                   style={{
-                    backgroundImage: `url(${user.picture.thumbnail})`,
+                    backgroundImage: `url(${user.picture.thumbnail})`
                   }}
                 />
               </div>
