@@ -10,10 +10,9 @@ const UserList = types
   .actions(self => ({
     getUsers: flow(function* () {
       try {
-        // const url = 'http://jsonplaceholder.typicode.com/posts/1';
-
         self.status = 'pending';
 
+        // const url = 'http://jsonplaceholder.typicode.com/posts/1';
         const url = 'https://randomuser.me/api/?results=10';
         const res = yield axios.get(url);
 
@@ -35,6 +34,7 @@ const UserList = types
           }
         }));
       } catch (error) {
+        self.status = 'error';
         console.log(error);
       }
     })

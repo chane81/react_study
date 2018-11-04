@@ -38,7 +38,8 @@ class ItemList extends Component {
 
         <div
           className={cx('user-list', {
-            noneDisplay: userList.status === 'pending',
+            noneDisplay:
+              userList.status === 'pending' || userList.status === 'error',
           })}
         >
           {userList.data.map((user, i) => (
