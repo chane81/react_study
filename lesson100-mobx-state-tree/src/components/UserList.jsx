@@ -40,32 +40,33 @@ class ItemList extends Component {
         </div>
 
         <br />
-
-        <div className={cx('user-list')}>
+        <div className={cx('user-list-wrap')}>
           {userList.status === 'pending' && (
             <div className={cx('loading')}>
               <img src="/images/loading.gif" alt="loading" />
             </div>
           )}
 
-          {userList.data.map((user, i) => (
-            <div className={cx('user')} key={i}>
-              <div className={cx('picture-wrap')}>
-                <div
-                  className={cx('picture')}
-                  style={{
-                    backgroundImage: `url(${user.picture.thumbnail})`
-                  }}
-                />
+          <div className={cx('user-list')}>
+            {userList.data.map((user, i) => (
+              <div className={cx('user')} key={i}>
+                <div className={cx('picture-wrap')}>
+                  <div
+                    className={cx('picture')}
+                    style={{
+                      backgroundImage: `url(${user.picture.thumbnail})`
+                    }}
+                  />
+                </div>
+                <div>
+                  <div>First Name: {user.name.first}</div>
+                  <div>Last Name: {user.name.last}</div>
+                  <div>Age: {user.dob.age}</div>
+                  <div>City: {user.location.city}</div>
+                </div>
               </div>
-              <div>
-                <div>First Name: {user.name.first}</div>
-                <div>Last Name: {user.name.last}</div>
-                <div>Age: {user.dob.age}</div>
-                <div>City: {user.location.city}</div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     );

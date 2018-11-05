@@ -10,20 +10,21 @@
   opacity: 0.5;
 }
 
-.user-list {
+.user-list-wrap {
   position: relative;
   width: 95%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  background-image: linear-gradient(to bottom right, #f8f9fa, #dee2e6);
+
+  .user-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background-image: linear-gradient(to bottom right, #f8f9fa, #dee2e6);
+  }
 
   .picture {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    background-repeat: no-repeat;
-    background-size: 3rem 3rem;
   }
 
   .picture-wrap {
