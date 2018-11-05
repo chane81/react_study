@@ -2,7 +2,7 @@
 
 # 환경설정
 
-## mobx 최신버전은 5.x.x 버전이지만 IE 는 지원이 안된다. polyfill 도 안된다.
+## mobx 최신버전은 5.x.x 버전이지만 IE(Edge 제외) 는 지원이 안된다. polyfill 도 안된다.
 
 - 5.x.x 부터 Proxy support 를 하지만 IE 는 안되고, nodejs 버전 6 미만은 지원이 안된다.
 
