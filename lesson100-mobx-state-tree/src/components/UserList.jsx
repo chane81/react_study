@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
 import classNames from 'classnames/bind';
 import styles from './UserList.scss';
-import SvgLoader from './SvgLoader';
 
 const cx = classNames.bind(styles);
 
@@ -42,18 +41,13 @@ class ItemList extends Component {
 
         <br />
 
-        {userList.status === 'pending' && (
-          <div className={cx('loading')}>
-            <SvgLoader />
-          </div>
-        )}
+        <div className={cx('user-list')}>
+          {userList.status === 'pending' && (
+            <div className={cx('loading')}>
+              <img src="/images/loading.gif" alt="loading" />
+            </div>
+          )}
 
-        <div
-          className={cx('user-list', {
-            noneDisplay:
-              userList.status === 'pending' || userList.status === 'error'
-          })}
-        >
           {userList.data.map((user, i) => (
             <div className={cx('user')} key={i}>
               <div className={cx('picture-wrap')}>
