@@ -19,17 +19,19 @@
   background-image: linear-gradient(to bottom right, #f8f9fa, #dee2e6);
 
   .picture {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 3rem 3rem;
   }
 
   .picture-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 4rem;
-    height: 4rem;
+    width: 3.7rem;
+    height: 3.7rem;
     border-radius: 50%;
     background: #e5dbff;
     margin: 1rem 0.5rem;
