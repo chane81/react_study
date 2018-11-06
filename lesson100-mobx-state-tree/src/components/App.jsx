@@ -1,19 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ItemList from './ItemList';
 import UserList from './UserList';
 
-const App = ({ invoice, userList }) => (
+const App = () => (
   <div>
-    <ItemList invoice={invoice} />
+    <ItemList />
     <hr />
-    <UserList userList={userList} />
+    <UserList />
   </div>
 );
-
-App.propTypes = {
-  invoice: PropTypes.objectOf(PropTypes.any),
-  userList: PropTypes.objectOf(PropTypes.any)
-};
 
 export default App;

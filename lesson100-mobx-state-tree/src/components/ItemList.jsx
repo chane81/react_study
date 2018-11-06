@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import Item from './Item';
 
+@inject('invoice')
 @observer
 class ItemList extends Component {
   static propTypes = {
-    invoice: PropTypes.objectOf(PropTypes.any),
+    invoice: PropTypes.objectOf(PropTypes.any)
   };
 
   render() {
@@ -27,7 +28,7 @@ class ItemList extends Component {
             invoice.itemList.add({
               name: this.nameInput.value,
               quantity: parseInt(this.quantityInput.value, 10),
-              price: parseInt(this.priceInput.value, 10),
+              price: parseInt(this.priceInput.value, 10)
             });
 
             e.target.reset();
@@ -79,4 +80,4 @@ class ItemList extends Component {
   }
 }
 
-export default observer(ItemList);
+export default ItemList;

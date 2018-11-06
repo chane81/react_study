@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import classNames from 'classnames/bind';
 import styles from './UserList.scss';
 
 const cx = classNames.bind(styles);
 
+@inject('userList')
 @observer
 class ItemList extends Component {
   static propTypes = {
@@ -73,4 +74,4 @@ class ItemList extends Component {
   }
 }
 
-export default observer(ItemList);
+export default ItemList;

@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { onPatch } from 'mobx-state-tree';
 import makeInspectable from 'mobx-devtools-mst';
+import { Provider } from 'mobx-react';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import Invoice from './models/Invoice';
@@ -27,7 +28,9 @@ onPatch(invoice, (patch) => {
 makeInspectable(invoice);
 
 ReactDOM.render(
-  <App invoice={invoice} userList={userList} />,
+  <Provider invoice={invoice} userList={userList}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 
