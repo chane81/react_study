@@ -1,6 +1,5 @@
 import { types, flow } from 'mobx-state-tree';
 import axios from 'axios';
-import { request } from 'graphql-request';
 import User from './User';
 
 const UserList = types
@@ -22,38 +21,9 @@ const UserList = types
       try {
         self.status = 'pending';
 
-        const query = `{
-          results {
-            name
-            {
-              title,
-              first,
-              last,
-            },
-            email,
-            phone,
-            dob
-            {
-              age
-            },
-            location
-            {
-              city
-            },
-            picture
-            {
-              large,
-              medium,
-              thumbnail
-            }
-          }
-        }`;
-
         // const url = 'http://jsonplaceholder.typicode.com/posts/1';
-        // const url = `https://randomuser.me/api/?results=${self.count}`;
-        // const res = yield axios.get(url);
-
-        const res = yield request(`https://randomuser.me/api/?results=${self.count}`, query);
+        const url = `https://randomuser.me/api/?results=${self.count}`;
+        const res = yield axios.get(url);
 
         const result = res.data.results;
 
