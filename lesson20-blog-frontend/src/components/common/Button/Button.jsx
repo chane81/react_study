@@ -15,7 +15,7 @@ const Button = ({ children, to, onClick, disabled, theme = 'default' }) => {
     <Element
       to={to}
       className={cx('button', theme, {
-        disabled,
+        disabled
       })}
       onClick={disabled ? () => null : onClick}
     >
@@ -26,11 +26,11 @@ const Button = ({ children, to, onClick, disabled, theme = 'default' }) => {
 
 // Prop Types
 Button.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   to: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
-  theme: PropTypes.string,
+  theme: PropTypes.string
 };
 
 export default Button;

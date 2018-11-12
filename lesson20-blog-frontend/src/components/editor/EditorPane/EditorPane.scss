@@ -9,7 +9,7 @@
     .title {
         background: $oc-gray-7;
         border: none;
-        outline: non;
+        outline: none;
         font-size: 1.5rem;
         padding: 1rem;
         color: white;
@@ -23,6 +23,14 @@
     .code-editor {
         flex: 1; // 남은영역 다 차지
         background: $oc-gray-9;
+        display: flex;
+        flex-direction: column; // .CodeMirror 가 세로 영역을 전부 차지
+
+        :global .CodeMirror {
+            font-size: 1rem;
+            flex: 1;
+            font-family: 'D2 Coding';
+        }
     }
 
     .tags {
