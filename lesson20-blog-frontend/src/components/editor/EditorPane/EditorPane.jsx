@@ -28,8 +28,26 @@ class EditorPane extends Component {
   // CodeMirror 인스턴스
   codeMirror = null;
 
+  // 에디터의 텍스트 cursor 위치
+  cursor = null;
+
   componentDidMount() {
     this.initializeEditor();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { markdown } = this.props;
+
+    // markdown이 변경되면 에디터 값도 변경됨
+    // 이 과정에서 커서의 위치가 초기화되기 때문에
+    // 저장한 커서의 위치가 있으면 해당 위치로 설정
+    if (prevProps.markdown !== markdown) {
+      const { codeMirror, cursor } = this;
+      if (!codeMirror) return; // 인스턴스를 아직 만들지 않았을 때
+      codeMirror.setValue(markdown);
+      if (!cursor) return; // 커서가 없을 때
+      codeMirror.setCursor(cursor);
+    }
   }
 
   initializeEditor = () => {
@@ -39,15 +57,40 @@ class EditorPane extends Component {
       lineNumbers: true, // 왼쪽에 라인 넘버 띄우기
       lineWrapping: true // 내용이 너무 길면 다음 줄에 작성
     });
+
+    this.codeMirror.on('change', this.handleChangeMarkdown);
+  };
+
+  handleChange = (e) => {
+    const { onChangeInput } = this.props;
+    const { name, value } = e.target;
+    onChangeInput({
+      name,
+      value
+    });
+  };
+
+  handleChangeMarkdown = (doc) => {
+    const { onChangeInput } = this.props;
+    this.cursor = doc.getCursor(); // 텍스트 cursor 위치 저장
+    onChangeInput({
+      name: 'markdown',
+      value: doc.getValue()
+    });
   };
 
   render() {
+    const { handleChange } = this;
+    const { tags, title } = this.props;
+
     return (
       <div className={cx('editor-pane')}>
         <input
           className={cx('title')}
           placeholder="제목을 입력하세요"
           name="title"
+          value={title}
+          onChange={handleChange}
         />
         <div
           className={cx('code-editor')}
@@ -63,6 +106,12 @@ class EditorPane extends Component {
     );
   }
 }
+
+// Prop Types
+EditorPane.propTypes = {
+  onChangeInput: PropTypes.func,
+  markdown: PropTypes.string
+};
 
 // Component Export
 export default EditorPane;
