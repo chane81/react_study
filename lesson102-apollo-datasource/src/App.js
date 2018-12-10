@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {default as RandomUser } from './RandomUserDatasource';
 
 class App extends Component {
+  state = {
+    resultJson: ''
+  }
+
+  handleClick = async () => {
+    const results = await RandomUser.getPerson();
+
+    // console.log(results);
+
+    // this.setState({
+    //   resultJson: JSON.stringify(results)
+    // }); 
+
+    //console.log(this.state);
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <button onClick={this.handleClick}>테스트</button>
+        <div>{this.state.resultJson}</div>
+
       </div>
     );
   }
