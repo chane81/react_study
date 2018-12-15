@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 const EditorHeader = ({ onGoBack, onSubmit }) => (
   <div className={cx('editor-header')}>
     <div className={cx('back')}>
-      <Button onClic={onGoBack} theme="outline">
+      <Button onClick={onGoBack} theme="outline">
         뒤로가기
       </Button>
     </div>

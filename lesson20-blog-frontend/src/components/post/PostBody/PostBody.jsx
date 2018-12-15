@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import PropTypes from 'prop-types';
 import styles from './PostBody.scss';
 
 // css 클래스 네임 바인딩

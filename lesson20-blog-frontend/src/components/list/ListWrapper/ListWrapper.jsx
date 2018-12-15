@@ -13,7 +13,7 @@ const ListWrapper = ({ children }) => (
 
 // Prop Types
 ListWrapper.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.array
 };
 
 // Component Export
