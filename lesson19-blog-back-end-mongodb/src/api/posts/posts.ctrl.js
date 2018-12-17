@@ -80,7 +80,7 @@ exports.list = async (ctx) => {
     // 헤더부분의 Last-Page 에 마지막 페이지번호 넣어주기
     // count is deprecated 되었다고 해서 countDocuments() 로 수정함
     const postCount = await Post.countDocuments().exec();
-    ctx.set('Last-Page', Math.ceil(postCount / 10));
+    ctx.set('last-page', Math.ceil(postCount / 10));
 
     // 내용 길이 제한 200자
     const limitBodyLength = post => ({
