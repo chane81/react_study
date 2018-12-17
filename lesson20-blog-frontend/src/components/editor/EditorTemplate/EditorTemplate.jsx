@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import styles from './EditorTemplate.scss';
@@ -20,13 +20,13 @@ class EditorTemplate extends React.Component {
   };
 
   // 마우스를 뗐을 때 등록한 이벤트 제거
-  handleMouseUp = (e) => {
+  handleMouseUp = () => {
     document.body.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('mouseup', this.handleMouseUp);
   };
 
   // separator 클릭할 때
-  handleSeparatorMouseDown = (e) => {
+  handleSeparatorMouseDown = () => {
     document.body.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('mouseup', this.handleMouseUp);
   };

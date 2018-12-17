@@ -204,10 +204,18 @@
         }
   ```
 
-#마크다운 데이터
+#라이브러리 ##마크다운 데이터
 
 - yarn
 
   ```
   yarn add codemirror marked prismjs
+  ```
+
+##시간표시 - https://momentjs.com
+
+- yarn
+
+  ```
+  yarn add monent
   ```

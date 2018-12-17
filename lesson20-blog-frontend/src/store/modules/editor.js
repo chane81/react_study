@@ -23,7 +23,7 @@ const initialState = Map({
 
 // reducer
 export default handleActions({
-  [INITIALIZE]: (state, action) => initialState,
+  [INITIALIZE]: () => initialState,
   [CHANGE_INPUT]: (state, action) => {
     const { name, value } = action.payload;
     return state.set(name, value);

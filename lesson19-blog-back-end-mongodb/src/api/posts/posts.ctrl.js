@@ -23,8 +23,10 @@ exports.write = async (ctx) => {
   const schema = Joi.object().keys({
     title: Joi.string().required(),
     body: Joi.string().required(),
-    tags: Joi.array().items(Joi.string().required())
+    tags: Joi.array().items(Joi.string())
   });
+
+  console.log('api write!');
 
   const result = Joi.validate(ctx.request.body, schema);
 
@@ -102,7 +104,10 @@ exports.read = async (ctx) => {
   try {
     const post = await Post.findById(id).exec();
 
+    console.log('api read!');
+
     if (!post) {
+      console.log('api read error!');
       ctx.status = 404;
       return;
     }

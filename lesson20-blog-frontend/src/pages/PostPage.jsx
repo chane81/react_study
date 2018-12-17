@@ -1,13 +1,21 @@
 import React from 'react';
 import PageTemplate from 'components/common/PageTemplate';
-import PostInfo from 'components/post/PostInfo/PostInfo';
-import PostBody from 'components/post/PostBody/PostBody';
+import Post from 'containers/post/Post';
+import PropTypes from 'prop-types';
 
-const PostPage = () => (
-  <PageTemplate>
-    <PostInfo />
-    <PostBody />
-  </PageTemplate>
-);
+const PostPage = ({ match }) => {
+  const { id } = match.params;
+
+  return (
+    <PageTemplate>
+      <Post id={id} />
+    </PageTemplate>
+  );
+};
+
+// Prop Types
+PostPage.propTypes = {
+  match: PropTypes.object
+};
 
 export default PostPage;

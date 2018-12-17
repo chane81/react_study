@@ -35,7 +35,7 @@ class EditorPane extends Component {
     this.initializeEditor();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { markdown } = this.props;
 
     // markdown이 변경되면 에디터 값도 변경됨
@@ -100,7 +100,12 @@ class EditorPane extends Component {
         />
         <div className={cx('tags')}>
           <div className={cx('description')}>태그</div>
-          <input name="tags" placeholder="태그를 입력하세요 (쉼표로 구분)" />
+          <input
+            name="tags"
+            placeholder="태그를 입력하세요 (쉼표로 구분)"
+            value={tags}
+            onChange={handleChange}
+          />
         </div>
       </div>
     );
@@ -110,7 +115,8 @@ class EditorPane extends Component {
 // Prop Types
 EditorPane.propTypes = {
   onChangeInput: PropTypes.func,
-  markdown: PropTypes.string
+  markdown: PropTypes.string,
+  title: PropTypes.string
 };
 
 // Component Export

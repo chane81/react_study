@@ -41,6 +41,7 @@
     "jest-resolve": "23.6.0",
     "marked": "^0.5.1",
     "mini-css-extract-plugin": "0.4.3",
+    "moment": "^2.23.0",
     "node-sass": "^4.9.4",
     "open-color": "^1.6.3",
     "optimize-css-assets-webpack-plugin": "5.0.1",
@@ -75,6 +76,7 @@
     "build": "cross-env NODE_PATH=src node scripts/build.js",
     "test": "cross-env NODE_PATH=src node scripts/test.js"
   },
+  "proxy": "http://localhost:4000/",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -127,6 +129,5 @@
   },
   "devDependencies": {
     "prettier-eslint": "^8.8.2"
-  },
-  "proxy": "http://localhost:4000"
+  }
 }
