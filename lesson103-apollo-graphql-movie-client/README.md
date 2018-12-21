@@ -1,4 +1,4 @@
-# Apollo GraphQL 영화웹
+# Apollo GraphQL 클라이언트 - 영화웹
 
 ## 참고 url
 
