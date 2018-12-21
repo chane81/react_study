@@ -7,13 +7,21 @@ import styles from './Pagination.scss';
 const cx = classNames.bind(styles);
 
 // Component 작성
-const Pagination = () => (
-  <div className={cx('pagination')}>
-    <Button disabled>이전 페이지</Button>
-    <div className={cx('number')}>페이지 1</div>
-    <Button>다음 페이지</Button>
-  </div>
-);
+const Pagination = ({ page, lastPage, tag }) => {
+  const createPagePath = pageNo => (tag ? `/tag/${tag}/${pageNo}` : `/page/${pageNo}`);
+
+  return (
+    <div className={cx('pagination')}>
+      <Button disabled={page === 1} to={createPagePath(page - 1)}>
+        이전 페이지
+      </Button>
+      <div className={cx('number')}>페이지 {page}</div>
+      <Button disabled={page === lastPage} to={createPagePath(page + 1)}>
+        다음 페이지
+      </Button>
+    </div>
+  );
+};
 
 // Component Export
 export default Pagination;
