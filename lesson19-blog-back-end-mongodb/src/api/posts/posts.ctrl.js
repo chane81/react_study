@@ -62,13 +62,18 @@ exports.list = async (ctx) => {
 
     // 페이지 구현
     const page = parseInt(ctx.query.page || 1, 10);
+    const { tag } = ctx.query;
+
+    const query = tag ?  {
+      tags: tag   // tags 배열에 tag를 가진 포스트 찾기
+    } : {};
 
     if (page < 1) {
       ctx.status = 400;
       return;
     }
 
-    const posts = await Post.find()
+    const posts = await Post.find(query)
       .sort({
         _id: -1
       })
@@ -79,14 +84,14 @@ exports.list = async (ctx) => {
 
     // 헤더부분의 Last-Page 에 마지막 페이지번호 넣어주기
     // count is deprecated 되었다고 해서 countDocuments() 로 수정함
-    const postCount = await Post.countDocuments().exec();
+    const postCount = await Post.countDocuments(query).exec();
     ctx.set('last-page', Math.ceil(postCount / 10));
 
-    // 내용 길이 제한 200자
+    // 내용 길이 제한 350자
     const limitBodyLength = post => ({
       //...post.toJSON(),   // lean()을 쓰지 않는다면 toJSON() 을 해줘야 JSON 객체로 가져옴
       ...post,
-      body: post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`
+      body: post.body.length < 350 ? post.body : `${post.body.slice(0, 350)}...`
     });
 
     ctx.body = posts.map(limitBodyLength);
