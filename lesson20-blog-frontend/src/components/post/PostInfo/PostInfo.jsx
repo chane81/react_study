@@ -31,7 +31,7 @@ const PostInfo = ({ publishedDate, title, tags }) => (
 PostInfo.propTypes = {
   publishedDate: PropTypes.string,
   title: PropTypes.string,
-  tags: PropTypes.string
+  tags: PropTypes.array
 };
 
 // Component Export

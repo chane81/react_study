@@ -16,4 +16,9 @@ export const getPostList = ({ tag, page }) => axios.get(`/api/posts/?${
     tag, page
   })}`);
 
+// 글 수정
+export const editPost = ({ id, title, body, tags }) => axios.patch(`/api/posts/${id}`, {
+  title, body, tags
+});
+
 export default writePost;

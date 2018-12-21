@@ -58,7 +58,7 @@ class MarkdownRender extends Component {
 
     // 마크다운이 존재하지 않는다면 공백처리
     if (!markdown) {
-      this.stateState({
+      this.setState({
         html: ''
       });
       return;
