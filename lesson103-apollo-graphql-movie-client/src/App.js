@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
+import { ApolloProvider } from 'react-apollo';
+import client from './apollo-client';
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        
-      </div>
-    );
+    return <ApolloProvider client={client}>
+      <div className="App"></div>
+    </ApolloProvider>
   }
 }
 
