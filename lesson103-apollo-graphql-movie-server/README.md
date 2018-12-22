@@ -7,11 +7,12 @@
 
 ## Apollo GraphQL 서버로 위위 오버패칭, 언더패칭문제를 해결할 수 있다.
 
-## 서버가동후 QUERY 테스트 - localhost:4000
+## 서버가동후 GraphQL QUERY 테스트 - localhost:4000
 
 ## 참고 url
 
 - graphql-yoga: https://github.com/prisma/graphql-yoga
+- 영화데이터 페이크 API: https://yts.am/api
 
 ## Yarn
 
@@ -20,4 +21,48 @@
 
   yarn global add babel-cli --ignore-engines
   yarn add babel-cli babel-preset-env babel-preset-stage-3 --dev
+  yarn add axios
 ```
+
+## GraplQL Playground 쿼리(더미 데이터용)
+
+- query movies
+
+  ```graphql
+  query {
+    movies {
+      id
+      name
+      score
+    }
+  }
+  ```
+
+- query movie
+
+  ```graphql
+  query {
+    movie(id: 2) {
+      id
+      name
+    }
+  }
+  ```
+
+- mutation addMovie
+
+  ```graphql
+  mutation {
+    addMovie(name: "Aquaman", score: 9) {
+      name
+    }
+  }
+  ```
+
+- mutation deleteMovie
+
+  ```graphql
+  mutation {
+    deleteMovie(id: 5)
+  }
+  ```
