@@ -66,3 +66,41 @@
     deleteMovie(id: 5)
   }
   ```
+
+## GraplQL Playground 쿼리(FAKE API 사용: https://yts.am/api)
+
+- query movies
+
+  ```graphql
+  query {
+    movies(rating: 9, limit: 5) {
+      id
+      title
+      rating
+    }
+  }
+  ```
+
+- query movie
+
+  ```graphql
+  query {
+    movie(id: 9922) {
+      id
+      title
+      rating
+    }
+  }
+  ```
+
+- query suggestions
+
+  ```graphql
+  query {
+    suggestions(id: 3305) {
+      id
+      title
+      rating
+    }
+  }
+  ```
