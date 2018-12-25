@@ -27,6 +27,7 @@ const options = {
 
 - graphql-yoga: https://github.com/prisma/graphql-yoga
 - 영화데이터 페이크 API: https://yts.am/api
+- GraphQL FAKE API: http://apis.guru/graphql-apis/
 
 ## Yarn
 
