@@ -7,7 +7,21 @@
 
 ## Apollo GraphQL 서버로 위위 오버패칭, 언더패칭문제를 해결할 수 있다.
 
-## 서버가동후 GraphQL QUERY 테스트 - localhost:4000
+## GraphQLServer 의 CORS 옵션 적용(크로스 도메인간 접근 허용)
+
+```JS
+const options = {
+  port: 8000,
+  endpoint: '/',
+  playground: '/playground',
+  cors: {
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+  }
+}
+```
+
+## 서버가동후 GraphQL QUERY 테스트 - localhost:8000
 
 ## 참고 url
 

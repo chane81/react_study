@@ -11,9 +11,19 @@ const server = new GraphQLServer({
 });
 */
 
+const options = {
+  port: 8000,
+  endpoint: '/',
+  playground: '/playground',
+  cors: {
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+  }
+}
+
 const server = new GraphQLServer({
   typeDefs: "./graphql/schema.graphql",
   resolvers
 });
 
-server.start(() => console.log("Graphql Server Running"));
+server.start(options, ({ port }) => console.log(`Graphql Server Start! Port ${port}`));
