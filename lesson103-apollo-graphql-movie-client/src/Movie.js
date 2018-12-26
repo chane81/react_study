@@ -6,7 +6,8 @@ import styles from './Home.scss';
 const cx = classNames.bind(styles);
 
 const Movie = ({id, title, rating, posterUrl}) => (
-    <div>
+  <div>
+    <Link to={`/details/${id}`}>
       <div 
         key={id} 
         className={cx('item')}
@@ -22,6 +23,7 @@ const Movie = ({id, title, rating, posterUrl}) => (
           className={cx('rating-img')}></img>
         </div>
       </div>
+    </Link>
     </div>
 );
 

@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro");
 
+body {
+  all: unset;
+}
+
+a:link {
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+}
+
 .loading {
   position: absolute;
   display: flex;
@@ -40,16 +50,18 @@
   }
 
   .item:hover {
+    cursor: pointer;
     box-shadow: 5px 10px 18px rgba(#888888, 0.5);
   }
 
   .title {
+    color: #343a40;
     font-weight: bold;
     height: 3.7rem;
     padding: 0.3rem 1rem;
     background: rgba(255, 255, 255, 0.8);
-    border-bottom-left-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
+    border-bottom-left-radius: 1.47rem;
+    border-bottom-right-radius: 1.47rem;
   }
 
   .rating-img {
