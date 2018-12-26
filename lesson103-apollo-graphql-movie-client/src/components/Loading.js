@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import styles from './Home.scss';
+import styles from '../styles/global.scss';
 
 const cx = classNames.bind(styles);
 
 const Loading = () => (
-  <div className={cx('loading')}>
+  <div className={cx('Loading')}>
     <img src="/images/loading.gif" alt="loading" />
   </div>
 );

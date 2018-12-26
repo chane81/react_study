@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import styles from './Home.scss';
+import styles from '../styles/global.scss';
 
 const cx = classNames.bind(styles);
 
 const Movie = ({id, title, rating, posterUrl}) => (
-  <div>
+  <div className={cx('Movie')}>
     <Link to={`/details/${id}`}>
       <div 
         key={id} 
-        className={cx('item')}
+        className={cx('card')}
         style={{
           backgroundImage: `url(${posterUrl})`
         }}  
@@ -24,7 +24,7 @@ const Movie = ({id, title, rating, posterUrl}) => (
         </div>
       </div>
     </Link>
-    </div>
+  </div>
 );
 
 export default Movie;
