@@ -45,10 +45,11 @@ const options = {
 
   ```graphql
   query {
-    movies {
+    movies(limit: 50, rating: 7) {
       id
       name
       score
+      genres
     }
   }
   ```

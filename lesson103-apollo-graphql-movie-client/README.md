@@ -21,4 +21,7 @@ const client = new ApolloClient({
 
 ```
   yarn add react-router-dom apollo-boost react-apollo graphql-tag graphql
+  yarn add react-helmet
+  yarn add classnames
+  yarn add node-sass
 ```
