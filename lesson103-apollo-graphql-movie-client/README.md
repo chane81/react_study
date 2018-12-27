@@ -2,9 +2,29 @@
 
 ## 참고 URL
 
-- react-apollo: https://github.com/apollographql/react-apollo
-- apollo-client-devtools: https://github.com/apollographql/apollo-client-devtools
-- GraphQL FAKE API: http://apis.guru/graphql-apis/
+- GraphQL FAKE API
+
+  > http://apis.guru/graphql-apis/
+
+- react-apollo
+
+  > https://github.com/apollographql/react-apollo
+
+- apollo-client-devtools
+
+  > https://github.com/apollographql/apollo-client-devtools
+
+- Apollo Client
+
+  > https://www.apollographql.com/client
+
+  > https://www.apollographql.com/docs/react/
+
+- GraphQL
+
+  > https://www.graphql.com
+
+  > https://www.graphql.com/guides/#practices
 
 ## 크롬에 apollo-client-devtools 설치 후 `[Cannot read property 'queryStore' of undefined]` 에러 발생시
 
