@@ -21,4 +21,7 @@ export const editPost = ({ id, title, body, tags }) => axios.patch(`/api/posts/$
   title, body, tags
 });
 
+// 글 삭제
+export const removePost = id => axios.delete(`/api/posts/${id}`);
+
 export default writePost;
