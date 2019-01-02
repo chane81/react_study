@@ -8,6 +8,11 @@ const cx = classNames.bind(styles);
 
 // Component 작성
 class ModalWrapper extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    visible: PropTypes.bool
+  };
+
   state = {
     animate: false
   };
@@ -53,11 +58,6 @@ class ModalWrapper extends Component {
     );
   }
 }
-
-// Prop Types
-ModalWrapper.propTypes = {
-  children: PropTypes.node
-};
 
 // Component Export
 export default ModalWrapper;

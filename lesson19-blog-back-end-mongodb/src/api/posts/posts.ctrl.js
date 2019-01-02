@@ -4,6 +4,16 @@ const {
   ObjectId
 } = require('mongoose').Types;
 
+// 로그인 체크
+exports.checkLogin = (ctx, next) => {
+  if (!ctx.session.logged) {
+    ctx.status = 401; // Unauthorized
+    return null;
+  }
+
+  return next();
+}
+
 // id 에 대해서 검증
 exports.checkObjectId = (ctx, next) => {
   const {
@@ -18,6 +28,7 @@ exports.checkObjectId = (ctx, next) => {
   return next();
 };
 
+// 글 작성
 exports.write = async (ctx) => {
   // request 데이터 검증
   const schema = Joi.object().keys({
@@ -57,6 +68,7 @@ exports.write = async (ctx) => {
 
 };
 
+// 글 리스트
 exports.list = async (ctx) => {
   try {
 
@@ -101,6 +113,7 @@ exports.list = async (ctx) => {
   }
 };
 
+// 글 상세
 exports.read = async (ctx) => {
   const {
     id
@@ -122,6 +135,7 @@ exports.read = async (ctx) => {
   }
 };
 
+// 글 삭제
 exports.remove = async (ctx) => {
   const {
     id
@@ -136,6 +150,7 @@ exports.remove = async (ctx) => {
 
 };
 
+// 글 수정
 exports.update = async (ctx) => {
   const {
     id
