@@ -24,7 +24,7 @@ class HeaderContainer extends Component {
 // Prop Types
 HeaderContainer.propTypes = {
   match: PropTypes.object,
-  BaseActions: PropTypes.func
+  BaseActions: PropTypes.object
 };
 
 export default connect(
