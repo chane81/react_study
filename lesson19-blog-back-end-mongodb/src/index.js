@@ -4,6 +4,7 @@ require('dotenv').config();
 const Koa = require('koa');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
+const session = require('koa-session');
 
 // mongo db 관련 모듈
 const mongoose = require('mongoose');
@@ -20,7 +21,8 @@ const router = new Router();
 // ENV 설정(PORT, MONGODB URI)
 const {
   PORT: port = 4000, // default: 4000 port
-  MONGO_URI: mongoURI
+  MONGO_URI: mongoURI,
+  COOKIE_SIGN_KEY: signKey
 } = process.env;
 
 // mongoose 모듈을 이용한 connect
@@ -50,6 +52,15 @@ router.use('/api', api.routes()); // api 라우트 적용
 
 // 라우터 적용 전에 bodyparser 적용
 app.use(bodyParser());
+
+// 세션/키 적용
+const sessionConfig = {
+  maxAge: 86400000, // 하루
+  // signed: true(기본으로 설정되어 있음)
+}
+
+app.use(session(sessionConfig, app));
+app.keys = [signKey];
 
 app.use(router.routes()).use(router.allowedMethods());
 

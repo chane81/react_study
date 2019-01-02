@@ -3,7 +3,7 @@ module.exports = {
     settings: {
         'import/resolver': {
             node: {
-                paths: [path.resolve('. / src')]
+                paths: [path.resolve('./src')]
             }
         }
     },
