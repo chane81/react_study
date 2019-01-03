@@ -1,6 +1,17 @@
 import axios from 'axios';
 import queryString from 'query-string';
 
+// 로그인
+export const login = password => axios.post('/api/auth/login', {
+  password
+});
+
+// 로그인 체크
+export const checkLogin = () => axios.get('/api/auth/check');
+
+// 로그아웃
+export const logout = () => axios.post('/api/auth/logout');
+
 // 글쓰기
 export const writePost = ({ title, body, tags }) => axios.post('/api/posts',
   {

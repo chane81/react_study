@@ -26,5 +26,12 @@ const AskRemoveModal = ({ visible, onConfirm, onCancel }) => (
   </ModalWrapper>
 );
 
+// Prop Types
+AskRemoveModal.propTypes = {
+  visible: PropTypes.bool,
+  onConfirm: PropTypes.func,
+  onCancel: PropTypes.func
+};
+
 // Component Export
 export default AskRemoveModal;

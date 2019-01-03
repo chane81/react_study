@@ -14,22 +14,23 @@ class HeaderContainer extends Component {
 
   render() {
     const { handleRemove } = this;
-    const { match } = this.props;
+    const { match, logged } = this.props;
     const { id } = match.params;
 
-    return <Header postId={id} onRemove={handleRemove} />;
+    return <Header postId={id} logged={logged} onRemove={handleRemove} />;
   }
 }
 
 // Prop Types
 HeaderContainer.propTypes = {
   match: PropTypes.object,
+  logged: PropTypes.bool,
   BaseActions: PropTypes.object
 };
 
 export default connect(
   state => ({
-    visible: state.base.getIn(['modal', 'remove'])
+    logged: state.base.get('logged')
   }),
   dispatch => ({
     BaseActions: bindActionCreators(baseActions, dispatch)

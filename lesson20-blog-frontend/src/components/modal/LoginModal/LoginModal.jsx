@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import ModalWrapper from 'components/modal/ModalWrapper';
+import PropTypes from 'prop-types';
 import styles from './LoginModal.scss';
 
 const cx = classNames.bind(styles);
@@ -26,7 +27,7 @@ const LoginModal = ({
         type="password"
         placeholder="비밀번호 입력"
         value={password}
-        onChange={onchange}
+        onChange={onChange}
         onKeyPress={onKeyPress}
       />
       {error && <div className={cx('error')}>로그인 실패</div>}
@@ -36,5 +37,16 @@ const LoginModal = ({
     </div>
   </ModalWrapper>
 );
+
+// Prop Types
+LoginModal.propTypes = {
+  visible: PropTypes.bool,
+  password: PropTypes.string,
+  error: PropTypes.bool,
+  onCancel: PropTypes.func,
+  onLogin: PropTypes.func,
+  onChange: PropTypes.func,
+  onKeyPress: PropTypes.func
+};
 
 export default LoginModal;

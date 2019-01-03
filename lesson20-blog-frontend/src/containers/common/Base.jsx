@@ -11,6 +11,14 @@ class Base extends Component {
 
   initialize = async () => {
     // 로그인 상태 확인
+    const { BaseActions } = this.props;
+
+    // checkLogin() 에서 pending 상태중일때는 로그인상태를 못가져오므로
+    // localStorage 에서 로그인 상태를 잠시 가져옴
+    if (localStorage.logged === 'true') {
+      baseActions.tempLogin();
+    }
+    BaseActions.checkLogin();
   };
 
   render() {
