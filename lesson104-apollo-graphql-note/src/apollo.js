@@ -2,12 +2,8 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
-import { importSchema } from 'graphql-import';
-import { defaults, resolvers } from './resolvers';
 
-const typeDefs = importSchema('./schema.graphql');
-
-//import { typeDefs, defaults, resolvers } from './clientState.gql';
+import { typeDefs, defaults, resolvers } from './clientState';
 
 const cache = new InMemoryCache();
 
