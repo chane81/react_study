@@ -1,8 +1,9 @@
 const { ADMIN_PASS: adminPass } = process.env;
 
 exports.login = (ctx) => {
+
   const { password } = ctx.request.body;
-console.log(adminPass);
+
   if (adminPass === password) {
     ctx.body = {
       success: true
