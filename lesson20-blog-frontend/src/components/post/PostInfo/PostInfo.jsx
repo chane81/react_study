@@ -15,7 +15,7 @@ const PostInfo = ({ publishedDate, title, tags }) => (
       <h1>{title}</h1>
       <div className={cx('tags')}>
         {// tags 가 존재할 때만 map 을 실행
-        tags
+          tags
           && tags.map(tag => (
             <Link key={tag} to={`/tag/${tag}`}>
               #{tag}

@@ -194,6 +194,14 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
       name: false,
+      // cacheGroups: {
+      //   styles: {
+      //     name: 'styles',
+      //     test: /\.(scss|sass|css)$/,
+      //     chunks: 'all',
+      //     enforce: true
+      //   }
+      // }
     },
     // Keep the runtime chunk seperated to enable long term caching
     // https://twitter.com/wSokra/status/969679223278505985
@@ -414,6 +422,8 @@ module.exports = {
     ],
   },
   plugins: [
+    // 비동기모듈 로딩 index.async.js 로 replace 하기 위한 플러그인 설정
+    new webpack.NormalModuleReplacementPlugin(/^pages$/, 'pages/index.async.jsx'),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
