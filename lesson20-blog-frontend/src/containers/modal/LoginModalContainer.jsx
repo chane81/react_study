@@ -8,6 +8,7 @@ import * as baseActions from 'store/modules/base';
 class LoginModalContainer extends Component {
   handleLogin = async () => {
     const { BaseActions, password } = this.props;
+
     try {
       // 로그인 시도, 성공하면 모달 닫기
       await BaseActions.login(password);
