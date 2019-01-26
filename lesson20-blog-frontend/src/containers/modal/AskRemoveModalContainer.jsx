@@ -44,7 +44,7 @@ class AskRemoveModalContainer extends Component {
 // Prop Types
 AskRemoveModalContainer.propTypes = {
   visible: PropTypes.bool,
-  BaseActions: PropTypes.func
+  BaseActions: PropTypes.object
 };
 
 export default connect(

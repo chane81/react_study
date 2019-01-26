@@ -23,7 +23,7 @@ PageTemplate.defaultProps = {
 
 // Prop Types
 PageTemplate.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.node
 };
 
 export default PageTemplate;
