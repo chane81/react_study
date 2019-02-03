@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{240:function(e,n,r){__NEXT_REGISTER_PAGE("/search",function(){return e.exports=r(241),{page:e.exports.default}})},241:function(e,n,r){"use strict";r.r(n);var t=r(0),u=r.n(t),a=r(23);n.default=function(e){var n=e.url;return u.a.createElement(a.a,null,'당신이 검색한 키워드는 "',n.query.keyword,'" 입니다.')}}},[[240,1,0]]]);
