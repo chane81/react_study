@@ -36,7 +36,7 @@ const Header = ({ postId, logged, onRemove }) => (
 Header.propTypes = {
   postId: PropTypes.string,
   logged: PropTypes.bool,
-  onRemove: PropTypes.funcff
+  onRemove: PropTypes.func
 };
 
 export default Header;
