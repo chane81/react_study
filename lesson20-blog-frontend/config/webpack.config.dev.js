@@ -333,6 +333,8 @@ module.exports = {
     ],
   },
   plugins: [
+    // 비동기모듈 로딩 index.async.js 로 replace 하기 위한 플러그인 설정
+    // new webpack.NormalModuleReplacementPlugin(/^pages$/, 'pages/index.async.jsx'),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
