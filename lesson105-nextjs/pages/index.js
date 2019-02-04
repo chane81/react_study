@@ -5,6 +5,7 @@ import Head from 'next/head';
 const Index = () => (
     <Layout>
         <Head>
+
             <title>
                 Index 페이지
             </title>
