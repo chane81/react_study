@@ -1,1 +1,33 @@
-{}
+{
+  // Editor 설정
+
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+  "editor.renderIndentGuides": false,
+  "editor.formatOnSave": false,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+
+  // eslint 설정
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+
+  // perttier 설정
+  "prettier.disableLanguages": ["js"],
+
+  // files 설정
+  "files.autoSave": "onFocusChange",
+
+  // 테마 설정
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Cobalt2",
+  "editor.minimap.enabled": false,
+
+  "gitlens.advanced.messages": {
+    "suppressFileNotUnderSourceControlWarning": true
+  },
+  "git.autofetch": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true
+}

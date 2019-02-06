@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{216:function(e,n,t){__NEXT_REGISTER_PAGE("/",function(){return e.exports=t(217),{page:e.exports.default}})},217:function(e,n,t){"use strict";t.r(n);var o=t(1),r=t.n(o),a=t(55);n.default=function(){return r.a.createElement(a.a,{title:"Index Page",linkTo:"/other"})}}},[[216,1,0]]]);
