@@ -4,6 +4,8 @@
 
 > npx create-react-app my-app --typescript
 
+> npx create-react-app my-app --scripts-version=react-scripts-ts
+
 
 ## yarn start 에러 발생 시
 - 에러내용
