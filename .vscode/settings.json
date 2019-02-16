@@ -29,5 +29,6 @@
   },
   "git.autofetch": true,
   "liveServer.settings.donotShowInfoMsg": true,
-  "liveServer.settings.donotVerifyTags": true
+  "liveServer.settings.donotVerifyTags": true,
+  "git.ignoreLimitWarning": true
 }
