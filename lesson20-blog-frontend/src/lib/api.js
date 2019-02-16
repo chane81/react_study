@@ -29,14 +29,10 @@ export const writePost = ({ title, body, tags }) => axios.post(`${apiHost}/api/p
 export const getPost = id => axios.get(`${apiHost}/api/posts/${id}`);
 
 // 리스트
-export const getPostList = ({ tag, page }) => {
-  console.log(process.env);
-
-  return axios.get(`${apiHost}/api/posts/?${
-    queryString.stringify({
-      tag, page
-    })}`);
-};
+export const getPostList = ({ tag, page }) => axios.get(`${apiHost}/api/posts/?${
+  queryString.stringify({
+    tag, page
+  })}`);
 
 // 글 수정
 export const editPost = ({ id, title, body, tags }) => axios.patch(`${apiHost}/api/posts/${id}`, {
