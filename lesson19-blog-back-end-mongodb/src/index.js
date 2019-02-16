@@ -21,12 +21,7 @@ const router = new Router();
 
 // CORS 관련 옵션 설정
 app.use(cors({
-  origin: (ctx) => '*',
-  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-  maxAge: 5,
-  credentials: true,
-  allowMethods: ['GET', 'POST', 'DELETE', 'PATCH'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept']
+  origin: (ctx) => '*'
 }));
 
 // ENV 설정(PORT, MONGODB URI)

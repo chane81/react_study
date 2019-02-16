@@ -51,8 +51,8 @@ export default handleActions({
   },
   ...pender({
     type: LOGIN,
-    onSuccess: (state, action) => state.set('logged', true),
-    onError: (state, action) => state.setIn(['loginModal', 'error'], true).setIn(['loginModal', 'password'], '')
+    onSuccess: state => state.set('logged', true),
+    onError: state => state.setIn(['loginModal', 'error'], true).setIn(['loginModal', 'password'], '')
   }),
   ...pender({
     type: CHECK_LOGIN,
@@ -65,7 +65,7 @@ export default handleActions({
     const { payload: value } = action;
     return state.setIn(['loginModal', 'password'], value);
   },
-  [INITIALIZE_LOGIN_MODAL]: (state, action) => state.set('loginModal', initialState.get('loginModal')),
-  [TEMP_LOGIN]: (state, action) => state.set('logged', true)
+  [INITIALIZE_LOGIN_MODAL]: state => state.set('loginModal', initialState.get('loginModal')),
+  [TEMP_LOGIN]: state => state.set('logged', true)
 
 }, initialState);

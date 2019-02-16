@@ -72,6 +72,8 @@ exports.write = async (ctx) => {
 exports.list = async (ctx) => {
   try {
 
+    console.log(ctx.session);
+    
     // 페이지 구현
     const page = parseInt(ctx.query.page || 1, 10);
     const { tag } = ctx.query;
