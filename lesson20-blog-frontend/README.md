@@ -49,10 +49,29 @@
   ```
   yarn add cross-env dotenv
   ```
-- .env 파일 추가하고 아래 구문 추가
+- env 설정을 `.env` 에 하지 않고 /config/env.js 에 한다
 
-  ```
-  NODE_PATH=src
+  ```js
+  function getClientEnvironment(publicUrl) {
+  const raw = Object.keys(process.env)
+    .filter(key => REACT_APP.test(key))
+    .reduce(
+      (env, key) => {
+        env[key] = process.env[key];
+        return env;
+      },
+      {
+        NODE_ENV: process.env.NODE_ENV || 'development',
+        PUBLIC_URL: publicUrl,
+
+        // api 설정
+        API_HOST: 'http://localhost:4000',
+
+        // NODE_PATH 설정
+        NODE_PATH: 'src'
+      }
+    );
+  }
   ```
 
 - jsconfig.json 파일 추가하고 아래 구문 추가

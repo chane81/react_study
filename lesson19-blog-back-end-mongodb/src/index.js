@@ -5,6 +5,7 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
+var cors = require('koa2-cors');
 
 // mongo db 관련 모듈
 const mongoose = require('mongoose');
@@ -17,6 +18,16 @@ const api = require('./api');
 // 모듈 인스턴스 생성
 const app = new Koa();
 const router = new Router();
+
+// CORS 관련 옵션 설정
+app.use(cors({
+  origin: (ctx) => '*',
+  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  maxAge: 5,
+  credentials: true,
+  allowMethods: ['GET', 'POST', 'DELETE', 'PATCH'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept']
+}));
 
 // ENV 설정(PORT, MONGODB URI)
 const {
