@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import axios from 'axios';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const test1 = async () => {
+  const result = await axios.get('/api/5000/posts');
+  console.log(JSON.stringify(result.data));
+};
+
+const test2 = async () => {
+  const result = await axios.get('/api/4000/posts?page=1');
+  console.log(JSON.stringify(result.data));
+};
+
+const test3 = async () => {
+  const result = await axios.get('/todos/1');
+  console.log(JSON.stringify(result.data));
+};
+
+const App = () => {
+  
+  test1();
+  test2();
+  test3();
+
+  return (
+    <div>
+      test
+    </div>
+  );
+};
 
 export default App;
