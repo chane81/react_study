@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import Button from 'components/common/Button/Button';
+import PropTypes from 'prop-types';
 import styles from './Pagination.scss';
 
 // css 클래스 네임 바인딩
@@ -22,6 +23,14 @@ const Pagination = ({ page, lastPage, tag }) => {
     </div>
   );
 };
+
+// Prop Types
+Pagination.propTypes = {
+  page: PropTypes.number,
+  lastPage: PropTypes.number,
+  tag: PropTypes.string
+};
+
 
 // Component Export
 export default Pagination;

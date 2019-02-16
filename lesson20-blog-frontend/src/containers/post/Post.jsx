@@ -12,7 +12,7 @@ class Post extends Component {
   }
 
   initialize = async () => {
-    const { PostActions, id, post } = this.props;
+    const { PostActions, id } = this.props;
 
     try {
       console.log('api read go!');

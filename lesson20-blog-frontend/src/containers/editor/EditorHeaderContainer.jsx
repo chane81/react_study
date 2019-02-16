@@ -87,7 +87,8 @@ EditorHeaderContainer.propTypes = {
   markdown: PropTypes.string,
   postId: PropTypes.string,
   EditorActions: PropTypes.object,
-  history: PropTypes.object
+  history: PropTypes.object,
+  location: PropTypes.string
 };
 
 export default connect(
