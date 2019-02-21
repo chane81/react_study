@@ -1,8 +1,8 @@
 //const app = require('express')();
-const Koa = require('koa');
+const koa = require('koa');
 const koaRouter = require('koa-router');
 const router = new koaRouter();
-const app = new Koa();
+const app = new koa();
 const server = require('http').Server(app.callback());
 const io = require('socket.io')(server);
 const next = require('next');
