@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@zeit/next-typescript": "^1.1.1",
     "axios": "^0.18.0",
+    "babel-plugin-transform-assets": "^1.0.2",
     "next": "^7.0.2",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
