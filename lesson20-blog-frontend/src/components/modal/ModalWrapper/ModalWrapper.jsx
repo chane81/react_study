@@ -17,7 +17,7 @@ class ModalWrapper extends Component {
     animate: false
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { visible } = this.props;
 
     if (prevProps.visible !== visible) {

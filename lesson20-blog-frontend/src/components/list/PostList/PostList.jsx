@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import removeMd from 'remove-markdown';
+import PropTypes from 'prop-types';
 import styles from './PostList.scss';
 
 // css 클래스 네임 바인딩
@@ -45,6 +46,19 @@ const PostList = ({ posts }) => {
   });
 
   return <div className={cx('post-list')}>{postList}</div>;
+};
+
+// Prop Types
+PostItem.propTypes = {
+  title: PropTypes.string,
+  body: PropTypes.string,
+  publishedDate: PropTypes.string,
+  tags: PropTypes.array,
+  id: PropTypes.string
+};
+
+PostList.propTypes = {
+  posts: PropTypes.object
 };
 
 // Component Export

@@ -11,7 +11,7 @@ class ListContainer extends Component {
     this.getPostList();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { page, tag } = this.props;
 
     // 페이지/태그가 바뀔때 리스트를 다시 불러옴

@@ -1,6 +1,6 @@
 /* 호환성 문제 해결을 위한 import, 제일 상단에 선언해야함 */
-import 'core-js/es6/map';
-import 'core-js/es6/set';
+// import 'core-js/es6/map';
+// import 'core-js/es6/set';
 import 'raf/polyfill';
 import 'babel-polyfill';
 /* 호환성 문제 해결을 위한 import, 제일 상단에 선언해야함 */

@@ -116,7 +116,8 @@ class EditorPane extends Component {
 EditorPane.propTypes = {
   onChangeInput: PropTypes.func,
   markdown: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  tags: PropTypes.array
 };
 
 // Component Export

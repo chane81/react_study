@@ -21,6 +21,29 @@
   - /styles
     > 전역적으로 적용될 스타일관련 코드가 위치함
 
+# 백엔드단 api 호출시 proxy를 이용하자
+- api 를 이용할 때 proxy 를 이용하는게 좋다
+- axios를 써서 호출시 origin 때문에(백단 origin 설정 물론 해두었지만) 다른건 잘 나와도 세션이 자꾸 사라지는 문제가 있다.
+- cra3 버전부터는 setupProxy.js 를 이용한 세션처리가 가능하기 때문에 아래와 같이 설정하면 된다.
+
+# Proxy 설정
+- yarn 설치
+  - yarn add http-proxy-middleware
+- src 폴더안에 setupProxy.js 파일을 생성
+  - 아래와 같이 proxy 관련 세팅을 하면됨
+  ```js
+  const proxy = require('http-proxy-middleware');
+
+  module.exports = function (app) {
+    app.use(
+      proxy('/api', {
+        target: 'http://localhost:4000/',
+        changeOrigin: true
+      })
+    );
+  };
+  ```
+
 # .gitignore 설정
 
 - .env 파일을 올리지 않게 하기 위해 아래구문을 .gitignore 파일내용에 추가
