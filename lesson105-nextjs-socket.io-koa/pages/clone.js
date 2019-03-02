@@ -7,6 +7,9 @@ class ChatTwo extends Component {
   static async getInitialProps ({ req }) {
     const response = await fetch('http://localhost:3000/messages/chat2')
     const messages = await response.json()
+
+
+
     return { messages }
   }
 
@@ -81,9 +84,15 @@ class ChatTwo extends Component {
       field: '',
       messages: state.messages.concat(message)
     }))
+
+    console.log('===handleSubmit===')
+    console.log(this.state.messages);
+    console.log('===handleSubmit===')
   }
 
   render () {
+    console.log(JSON.stringify(this.state.messages));
+
     return (
       <main>
         <div>

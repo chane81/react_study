@@ -90,6 +90,8 @@ class ChatOne extends Component {
   }
 
   render () {
+    //console.log(JSON.stringify(this.state.messages));
+
     return (
       <main>
         <div>

@@ -10,3 +10,36 @@ Unhandled promise rejection SecurityError
 ```
 yarn add next 7.0.2
 ```
+
+# vs-code 디버깅용 launch.json 세팅
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Next: Chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Next: Node",
+            "runtimeExecutable": "next",
+            "runtimeArgs": [
+                "--inspect"
+            ],
+            "port": 3000,
+            "console": "integratedTerminal"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Next: Full",
+            "configurations": ["Next: Node", "Next: Chrome"]
+        }
+    ]
+}
+```
