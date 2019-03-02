@@ -21,6 +21,12 @@ const messages = {
 
 // socket.io server
 io.on('connection', socket => {
+  console.log(`socket connected - socketId: ${socket.id}`);
+
+  socket.on('disconnect', () => {
+    console.log(`socket disconnected - socketId: ${socket.id}`);
+  });
+
   socket.on('message.chat1', data => {
     messages['chat1'].push(data)
     socket.broadcast.emit('message.chat1', data)
@@ -33,14 +39,14 @@ io.on('connection', socket => {
   socket.on('error', (err) => {
     console.log('Error connecting to server', err);
   });
-})
+});
 
 app.use(bodyParser());
 
 nextApp.prepare().then(() => {
   router.get('/messages/:chat', (ctx, next) => {
-    console.log(ctx.params);
-      ctx.body = JSON.stringify(ctx.params.chat);
+    console.log(messages[ctx.params.chat]);
+    ctx.body = JSON.stringify(messages[ctx.params.chat]);
   });
 
   router.get('*', async (ctx, next) => {

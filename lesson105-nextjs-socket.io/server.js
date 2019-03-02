@@ -32,6 +32,8 @@ io.on('connection', socket => {
 
 nextApp.prepare().then(() => {
   app.get('/messages/:chat', (req, res) => {
+    console.log(messages[req.params.chat]);
+    
     res.json(messages[req.params.chat])
   })
 

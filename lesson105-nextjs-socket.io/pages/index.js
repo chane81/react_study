@@ -6,11 +6,8 @@ class ChatOne extends Component {
   // fetch old messages data from the server
   static async getInitialProps ({ req }) {
     
-    console.log('index-getInit');
     const response = await fetch('http://localhost:3000/messages/chat1');
     const messages = await response.json();
-
-    console.log('index-getInit2');
 
     return { messages };
   }
