@@ -80,6 +80,7 @@
     "dev": "next",
     "start": "cross-env NODE_PATH=src node scripts/start.js",
     "build": "cross-env NODE_PATH=src node scripts/build.js",
+    "build:server": "cross-env NODE_PATH=src node scripts/build.server.js",
     "test": "cross-env NODE_PATH=src node scripts/test.js"
   },
   "eslintConfig": {

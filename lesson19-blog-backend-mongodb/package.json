@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.3",
+    "browser-env": "^3.2.6",
     "dotenv": "^6.0.0",
     "joi": "^13.7.0",
     "koa": "^2.6.2",
@@ -12,6 +13,7 @@
     "koa-router": "^7.4.0",
     "koa-session": "^5.10.1",
     "koa-session-memory": "^1.0.2",
+    "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
     "mongodb": "^3.1.6",
     "mongoose": "^5.3.1"

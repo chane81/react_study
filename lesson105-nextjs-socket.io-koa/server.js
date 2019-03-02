@@ -40,7 +40,7 @@ app.use(bodyParser());
 nextApp.prepare().then(() => {
   router.get('/messages/:chat', (ctx, next) => {
     console.log(ctx.params);
-      ctx.body = JSON.stringify(ctx.params.chat);
+    ctx.body = JSON.stringify(ctx.params.chat);
   });
 
   router.get('*', async (ctx, next) => {

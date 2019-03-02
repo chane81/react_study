@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import marked from 'marked';
-import Prism from 'prismjs';
-import 'prismjs/themes/prism-okaidia.css';
-// 지원할 코드 형식 들을 불러옵니다.
-// http://prismjs.com/#languages-list 참조
-import 'prismjs/components/prism-bash.min';
-import 'prismjs/components/prism-javascript.min';
-import 'prismjs/components/prism-jsx.min';
-import 'prismjs/components/prism-css.min';
 import styles from './MarkdownRender.scss';
+import 'prismjs/themes/prism-okaidia.css';
+
+let Prism = null;
+const isBrowser = process.env.APP_ENV === 'browser';
+
+if (isBrowser) {
+  Prism = require('prismjs');
+
+  // 지원할 코드 형식 들을 불러옵니다.
+  // http://prismjs.com/#languages-list 참조
+  require('prismjs/components/prism-bash.min');
+  require('prismjs/components/prism-javascript.min');
+  require('prismjs/components/prism-jsx.min');
+  require('prismjs/components/prism-css.min');
+}
+
 
 const cx = classNames.bind(styles);
 

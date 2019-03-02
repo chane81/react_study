@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import CodeMirror from 'codemirror';
 import styles from './EditorPane.scss';
-
-// 마크다운 문법 색상
-import 'codemirror/mode/markdown/markdown';
-
-// 마크다운 내부에 들어가는 코드 색상
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/jsx/jsx';
-import 'codemirror/mode/css/css';
-import 'codemirror/mode/shell/shell';
-
 // CodeMirror를 위한 CSS 스타일
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/monokai.css';
+
+// 브라우저의 경우면 로딩
+let CodeMirror = null;
+const isBrowser = process.env.APP_ENV === 'browser';
+
+if (isBrowser) {
+  CodeMirror = require('codemirror');
+  // 마크다운 문법 색상
+  require('codemirror/mode/markdown/markdown');
+
+  // 마크다운 내부에 들어가는 코드 색상
+  require('codemirror/mode/javascript/javascript');
+  require('codemirror/mode/jsx/jsx');
+  require('codemirror/mode/css/css');
+  require('codemirror/mode/shell/shell');
+}
+
 
 // css 클래스 네임 바인딩
 const cx = classNames.bind(styles);

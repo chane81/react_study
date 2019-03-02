@@ -4,6 +4,7 @@ import axios from 'axios';
 class SSRTest extends React.Component {
     static async getInitialProps ({req}) {
         const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+        console.log('test');
         return {
             users: response.data,
             from: req ? 'server' : 'client'

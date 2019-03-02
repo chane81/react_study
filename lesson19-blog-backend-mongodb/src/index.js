@@ -6,6 +6,10 @@ const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
 var cors = require('koa2-cors');
+const ssr = require('./ssr');
+const path = require('path');
+const serve = require('koa-static');
+const staticPath = path.join(__dirname, '../../lesson20-blog-frontend/build');
 
 // mongo db 관련 모듈
 const mongoose = require('mongoose');
@@ -53,8 +57,13 @@ mongoose.connect(mongoURI, {
 //   }
 // });
 
+
+// ssr 전에 와야함
+app.use(serve(staticPath));
+
 // router에 api 라우터를 넣음
 router.use('/api', api.routes()); // api 라우트 적용
+router.get('/', ssr);
 
 // 라우터 적용 전에 bodyparser 적용
 app.use(bodyParser());
@@ -69,6 +78,11 @@ app.use(session(sessionConfig, app));
 app.keys = [signKey];
 
 app.use(router.routes()).use(router.allowedMethods());
+
+
+
+// 일치하는것이 없으면 ssr 실행
+app.use(ssr);
 
 app.listen(port, () => {
   console.log('listening to port', port);

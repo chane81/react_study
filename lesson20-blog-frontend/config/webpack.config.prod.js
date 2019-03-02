@@ -112,7 +112,18 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the app code.
-  entry: [paths.appIndexJs],
+  entry: {
+    app: paths.appIndexJs,
+    vendor: [
+      require.resolve('./polyfills.js'),
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'redux',
+      'codemirror',
+      'prismjs'
+    ]
+  },
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -229,14 +240,11 @@ module.exports = {
       'react-native': 'react-native-web',
     },
     plugins: [
-      // Adds support for installing with Plug'n'Play, leading to faster installs and adding
-      // guards against forgotten dependencies and such.
+      // new webpack.NormalModuleReplacementPlugin(
+      //   /^pages$/,
+      //   'pages/index.async.js'
+      // ),
       PnpWebpackPlugin,
-      // Prevents users from importing files from outside of src/ (or node_modules/).
-      // This often causes confusion because we only process files within src/ with babel.
-      // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
-      // please link the files into your node_modules/ and let module-resolution kick in.
-      // Make sure your source files are compiled, as they will not be processed in any way.
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
     ],
   },
@@ -269,7 +277,7 @@ module.exports = {
 
           },
           loader: require.resolve('eslint-loader'),
-        }, ],
+        },],
         include: paths.appSrc,
       },
       {

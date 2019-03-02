@@ -52,6 +52,6 @@ module.exports = {
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
   globalStyles: resolveApp('src/styles'),
-  ssrJs: resolveApp('ssr/ssr.js'),
-  ssrBuild: resolveApp('../blog-backend/src/ssr')
+  ssrJs: resolveApp('src/ssr.jsx'),
+  ssrBuild: resolveApp('../lesson19-blog-backend-mongodb/src/ssr')
 };
