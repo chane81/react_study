@@ -1,32 +1,31 @@
 const render = require('./render').default;
 const manifest = require('../../../lesson20-blog-frontend/build/asset-manifest.json');
 
-function buildHtml({ html }) {
+function buildHtml({ html, helmet, preloadedState }) {
+  const { title, meta } = helmet;
   return `
-  <!doctype html>
-  <html lang="en">
-  
-  <head>
-      <meta charset="utf-8">
-      <link rel="shortcut icon" href="/favicon.ico">
-      <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-      <meta name="theme-color" content="#000000">
-      <link rel="manifest" href="/manifest.json">
-      <title>React App</title>
-      <link href="/static/css/app.8a564272.chunk.css" rel="stylesheet">
-  </head>
-  
-  <body><noscript>You need to enable JavaScript to run this app.</noscript>
-      <div id="root">${html}</div>
-      <script src="/static/js/10.1c059a85.chunk.js"></script>
-      <script src="/static/js/app.73a68cd0.chunk.js"></script>
-      <script src="/static/js/0.5869029b.chunk.js"></script>
-      <script src="/static/js/1.2e5b7fc7.chunk.js"></script>
-      <script src="/static/js/vendor.4ddecb62.chunk.js"></script>
-  </body>
-  
-  </html>
-  `;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="shortcut icon" href="/favicon.ico">
+  ${title.toString()}
+  ${meta.toString()}
+  <link href="/${manifest['app.css']}" rel="stylesheet">
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">${html}</div>
+  <script>
+    window.__PRELOADED_STATE__ = ${preloadedState}
+  </script>
+  <script type="text/javascript" src="/${manifest['vendor.js']}"></script>
+  <script type="text/javascript" src="/${manifest['app.js']}"></script>
+</body>
+</html>`;
 }
 
 

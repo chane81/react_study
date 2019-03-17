@@ -21,6 +21,10 @@
   - /styles
     > 전역적으로 적용될 스타일관련 코드가 위치함
 
+# yarn build:server 할 때
+- ssr.jsx 로 빌드시에는 웹팩 에러가 나므로 ssr.js 로 하여 빌드하여야 한다.
+
+
 # 백엔드단 api 호출시 proxy를 이용하자
 - api 를 이용할 때 proxy 를 이용하는게 좋다
 - axios를 써서 호출시 origin 때문에(백단 origin 설정 물론 해두었지만) 다른건 잘 나와도 세션이 자꾸 사라지는 문제가 있다.
