@@ -12,7 +12,7 @@ class SSRTest extends React.Component {
     }
 
     render() {
-        const { users } = this.props;
+        const { users, from } = this.props;
 
         const userList = users.map(
             user => <li key={user.id}>{user.username}</li>
@@ -20,7 +20,7 @@ class SSRTest extends React.Component {
 
         return (
             <Layout>
-                {this.props.from} 에서 실행됨
+                {from} 에서 실행됨
                 <ul>
                     {userList}
                 </ul>
