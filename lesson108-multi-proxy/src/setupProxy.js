@@ -23,8 +23,8 @@ module.exports = function (app) {
 
   app.use(
     proxy('/todos', {
-      target: 'http://jsonplaceholder.typicode.com/',
-      changeOrigin: true
+      target: 'http://country.io/',
+      changeOrigin: false
     })
   );
 };
